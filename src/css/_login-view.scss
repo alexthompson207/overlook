@@ -1,3 +1,7 @@
+body {
+  background-color: $light-green;
+}
+
 h1 {
   font-size: 3rem;
   font-weight: bold;
@@ -48,7 +52,6 @@ h2 {
 .login-error {
   color: $error;
   font-size: 1.5rem;
-  // font-style: italic;
   font-weight: bold;
   margin-top: 1%;
 }
