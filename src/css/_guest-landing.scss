@@ -12,3 +12,28 @@
       text-align: end;
     }
 }
+
+.date-view {
+  margin-top: 1%;
+  @include flex-center-column;
+}
+
+.date-view-input {
+  @extend .date-view;
+  border: 5px solid;
+  padding: 1% 5%;
+
+    input {
+      margin-bottom: 5%;
+      border-color: $black;
+      font-size: 1rem;
+      width: 100%;
+      padding: 5% 30% 5% 30%;;
+  }
+
+    button {
+      @extend input;
+      background-color: $accent;
+      
+  }
+}
