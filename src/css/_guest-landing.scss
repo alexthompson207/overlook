@@ -17,12 +17,17 @@
 .date-view {
   margin-top: 1%;
   @include flex-center-column;
+
+    .date-view-title {
+      font-size: 1.3rem;
+    }
 }
 
 .date-view-input {
   @extend .date-view;
   width: 15%;
   border: 5px solid;
+  border-radius: 5px;
   padding: 1% 5%;
 
     input {
@@ -63,4 +68,8 @@
   text-align: center;
   padding: 1%;
   box-shadow: 2px 2px 6px $grey;
+}
+
+.hidden {
+  display: none;
 }
