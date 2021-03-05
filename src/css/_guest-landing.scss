@@ -1,0 +1,14 @@
+.guest-nav {
+  background-color: $nav-bar;
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.guest-nav-right {
+  align-self: center;
+
+    h2 {
+      text-align: end;
+    }
+}

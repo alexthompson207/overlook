@@ -8,22 +8,44 @@
 </head>
 
 <body>
-  <header>
-    <section class="login-view" id="loginView">
-      <nav class="login-nav">
-        <h1 class="login-title">Welcome to Overlook Hotel!</h1>
-        <h2 class="login-message">Please sign in to view your account</h2>
-      </nav>
-      <form class="login-form" id="loginForm">
-        <input aria-label="username-input" type="text" placeholder="Enter Your Username" class="login-username-input"
-          required>
-        <input aria-label="password-input" type="password" placeholder="Enter Your Password"
-          class="login-username-input" required>
-        <button class="login-button">Log In</button>
-        <h3 class="login-error">This Username and Password is not recognized!</h3>
-      </form>
+
+  <section class="login-view hidden" id="loginView">
+    <nav class="login-nav">
+      <h1 class="login-title">Welcome to Overlook Hotel!</h1>
+      <h2 class="login-message">Please sign in to view your account</h2>
+    </nav>
+    <form class="login-form" id="loginForm">
+      <input aria-label="username-input" type="text" placeholder="Enter Your Username" class="login-username-input"
+        required>
+      <input aria-label="password-input" type="password" placeholder="Enter Your Password" class="login-username-input"
+        required>
+      <button class="login-button">Log In</button>
+      <h3 class="login-error">This Username and Password is not recognized!</h3>
+    </form>
+  </section>
+  <section class="guest-view" id=guestView>
+    <nav class="guest-nav">
+      <div class="guest-nav-left">
+        <h1 class="guest-nav-title">Overlook Hotel</h1>
+        <h2 class="guest-nav-date">Today's Date: MM/DD/YEAR</h2>
+      </div>
+      <div class="guest-nav-right">
+        <h2 class="guest-nav-name">Welcome Alex Thompson!</h2>
+        <h2 class="guest-nav-cost">You have spent $1,000 on your stays so far!</h2>
+      </div>
+    </nav>
+    <section class="book-room-view">
+      <div class="date-view">
+        <label for="dateInput">Make a Booking</label>
+        <input type="date" id="dateInput" class="date-input" min="2021-03-05" max="2025-12-31" required>
+        <button class="data-button">Check Availability</button>
+      </div>
+
     </section>
-  </header>
+
+
+  </section>
+
   <main>
 
 
