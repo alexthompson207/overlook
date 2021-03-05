@@ -45,3 +45,10 @@ h2 {
   font-weight: bold;
 }
 
+.login-error {
+  color: $error;
+  font-size: 1.5rem;
+  // font-style: italic;
+  font-weight: bold;
+  margin-top: 1%;
+}
