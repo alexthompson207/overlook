@@ -23,14 +23,27 @@ rooms: {
     "costPerNight": 358.4
   };
 
-User Class
-properties: taken from customer data ()
-id: number
-name: string 
-username: 
-password: 
+Login:  username: customer50 (where 50 is the ID of the user)
+        password: overlook2021
 
-methods:
+User Class (userName, customers)
+properties: UserName taken from login (userName, customers), determines type of user Guest or Manager
+
+id: is number 1-50 take from userName, use slice, check that it's a number, set id = 0 if manager
+username: userName  -- ex. customer50 where 50 is user ID
+password: password -- overlook2021 -- same for both manager and user // do i need this?
+customers: holds all customerData from API
+name; - to be determined from findUserName method
+
+methods: 
+determineUser(userName) : determines if user is a Guest or Manager 
+  return  'guest' if id is between 1- 50;
+  return manger if id === 0
+  return error message if password or id doesn't match guest or user;
+
+findUserName() : iterate over customer data, find where userId matches customer id
+  return name; set name to property.
+
 
 
 Hotel Class (roomdata, bookingdata)
@@ -39,23 +52,31 @@ roomdata: all room data from API
 bookingdata: all booking data from API
 avaiableRooms: []
 methods:
-findRoomsAvaiable()
-findRoomByType()
+findRoomsAvaiable() - iterate over bookingsData to find open rooms
+findRoomByType() - filter roomdata by room type
 
-Guest Class: for a single customer/user --> extends User Class?
+
+Guest Class: for a single customer/user --> extends User Class? child of User?
+if it is Child of User inherits id, username, customers, and name properties
+
+constructor(userName, customers)
 properties:
+from User Class:
 id: 
-name:
+userName:
+customers:
+name: this.findUserName();
+
+Guest Properties
 previousBookings: []
 futureBookings: []
 currentBooking ?
 totalAmountSpent: 0
+
 methods:
 
 findBookingHistory() : returns all bookings matched with user by id
-
 calculateAmountSpent() : returns total cost of booking histroy for user by costPerNight
-
 sortBookingHistory() : filter booking history, past, present, future booking, set respective property to result, ex. past bookings array = this.previousBookings;
 
 
