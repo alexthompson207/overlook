@@ -9,12 +9,32 @@
 
 .return-home-button {
   margin-top: 10px;
-  padding: 1%;
+  padding: .5% 1%;
+  font-size: 14px;
+  border: 3px solid $accent;
+
+    &:hover {
+      cursor: pointer;
+      border-width: 5px;
+    }
 }
 
 .room-filter-inputs {
   display: flex;
   flex-direction: row;
+
+    h2 {
+      padding-right: 10px;
+    }
+
+    select {
+      border: 3px solid $accent;
+      font-size: 14px;
+    }
+}
+
+.room-type-inputs:hover {
+  cursor: pointer;
 }
 
 .room-cards-view {
