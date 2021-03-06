@@ -119,5 +119,17 @@ describe('User', () => {
 
       expect(random).to.deep.equal('Error, not a valid username and password');
     });
+
+    it('should return a valid guest\'s name', () => {
+      user1.determineUserType('overlook2021');
+
+      expect(user1.getGuestName()).to.deep.equal('Tony Hawk');
+    });
+
+    it('should return an error if guest\'s name isn\'t in records', () => {
+      user5.determineUserType('overlook2021');
+
+      expect(user5.getGuestName()).to.deep.equal('Error, guest not on file');
+    });
   });
 })

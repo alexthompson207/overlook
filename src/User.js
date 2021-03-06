@@ -30,6 +30,15 @@ class User {
       return 'Error, not a valid username and password';
     }
   }
+
+  getGuestName() {
+    const currentGuest = this.customerData.find(user => user.id === this.id);
+    if (currentGuest) {
+      return currentGuest.name;
+    } else {
+      return `Error, guest not on file`
+    }
+  }
 }
 
 
