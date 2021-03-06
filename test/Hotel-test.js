@@ -3,7 +3,7 @@ const expect = chai.expect;
 import Hotel from '../src/Hotel.js';
 import { roomData, bookingData } from './test-data';
 
-describe.only('Hotel', () => {
+describe('Hotel', () => {
   let hotel;
 
   beforeEach(() => {
