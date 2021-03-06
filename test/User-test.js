@@ -78,14 +78,6 @@ describe('User', () => {
       expect(user1.guest).to.deep.equal(false);
     });
 
-    it('should be able to get a valid user\'s id', () => {
-      user1.determineUserType('overlook2021');
-      user4.determineUserType('overlook2021');
-
-      expect(user1.id).to.deep.equal(1);
-      expect(user4.id).to.deep.equal(0);
-    });
-
     it('should be able to determine if it\'s user type is a guest', () => {
       const guest = user1.determineUserType('overlook2021');
 
@@ -100,6 +92,18 @@ describe('User', () => {
       expect(manager).to.deep.equal('manager');
       expect(user4.manager).to.deep.equal(true);
       expect(user4.guest).to.deep.equal(false);
+    });
+
+    it('should be able to get a valid guests\'s id', () => {
+      user2.getUserID('overlook2021');
+
+      expect(user2.id).to.deep.equal(40);
+    });
+
+    it('should be able to get a valid managers\'s id', () => {
+      user4.determineUserType('overlook2021');
+
+      expect(user4.id).to.deep.equal(0);
     });
 
     it('should be able to validate the user\'s username and password', () => {
