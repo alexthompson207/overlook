@@ -144,5 +144,4 @@ const bookingData = [
     "roomServiceCharges": []
   }];
 
-export const roomData;
-export const bookingData;
+export { roomData, bookingData };

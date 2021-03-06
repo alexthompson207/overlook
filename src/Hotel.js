@@ -1,13 +1,22 @@
 class Hotel {
-  constructor(roomData, bookingData, data) {
-    this.roomData = roomData;
-    this.bookingData = bookingData;
+  constructor(roomData, bookingData, date) {
+    this.rooms = roomData;
+    this.bookings = bookingData;
     this.date = date;
     this.avaiableRooms = [];
   }
+
+  findRoomsAvaiable(date) {
+    const bookedRooms = this.bookings.filter(booking => booking.date === date);
+    // const allRoomNumbers = 
+
+  }
+
+
+
 }
 
-export default User;
+export default Hotel;
 
 // bookings:   {
 //   "id": "5fwrgu4i7k55hl6sz",
