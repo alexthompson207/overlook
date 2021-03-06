@@ -39,30 +39,6 @@ const roomData = [
     "bedSize": "queen",
     "numBeds": 2,
     "costPerNight": 340.17
-  },
-  {
-    "number": 6,
-    "roomType": "junior suite",
-    "bidet": true,
-    "bedSize": "queen",
-    "numBeds": 1,
-    "costPerNight": 397.02
-  },
-  {
-    "number": 7,
-    "roomType": "single room",
-    "bidet": false,
-    "bedSize": "queen",
-    "numBeds": 2,
-    "costPerNight": 231.46
-  },
-  {
-    "number": 8,
-    "roomType": "junior suite",
-    "bidet": false,
-    "bedSize": "king",
-    "numBeds": 1,
-    "costPerNight": 261.26
   }];
 
 const bookingData = [
@@ -70,7 +46,7 @@ const bookingData = [
     "id": "5fwrgu4i7k55hl6sz",
     "userID": 9,
     "date": "2020/04/22",
-    "roomNumber": 15,
+    "roomNumber": 1,
     "roomServiceCharges": []
   },
   {
@@ -111,36 +87,36 @@ const bookingData = [
   {
     "id": "5fwrgu4i7k55hl6ta",
     "userID": 25,
-    "date": "2020/01/11",
-    "roomNumber": 9,
+    "date": "2020/01/31",
+    "roomNumber": 1,
     "roomServiceCharges": []
   },
   {
     "id": "5fwrgu4i7k55hl6tb",
     "userID": 49,
-    "date": "2020/02/06",
-    "roomNumber": 5,
+    "date": "2020/01/31",
+    "roomNumber": 2,
     "roomServiceCharges": []
   },
   {
     "id": "5fwrgu4i7k55hl6tc",
     "userID": 22,
-    "date": "2020/01/30",
-    "roomNumber": 13,
+    "date": "2020/01/31",
+    "roomNumber": 3,
     "roomServiceCharges": []
   },
   {
     "id": "5fwrgu4i7k55hl6td",
     "userID": 27,
     "date": "2020/01/31",
-    "roomNumber": 20,
+    "roomNumber": 4,
     "roomServiceCharges": []
   },
   {
     "id": "5fwrgu4i7k55hl6te",
     "userID": 44,
-    "date": "2020/01/19",
-    "roomNumber": 8,
+    "date": "2020/01/31",
+    "roomNumber": 5,
     "roomServiceCharges": []
   }];
 
