@@ -11,7 +11,7 @@ class User {
 
   getUserID() {
     this.id = parseInt(this.userName.slice(8));
-    if (0 > this.id < 51) {
+    if (this.id > 0 && this.id < 51) {
       this.guest = true;
       return 'guest';
     }

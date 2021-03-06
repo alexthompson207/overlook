@@ -26,36 +26,55 @@ describe('User', () => {
     user4 = new User('manager', customerData);
   });
 
-  it('should be a function', () => {
-    expect(User).to.be.a('function');
+  describe('User Properties', () => {
+
+    it('should be a function', () => {
+      expect(User).to.be.a('function');
+    });
+
+    it('should be an instance of User', () => {
+      expect(user1).to.be.an.instanceof(User);
+    });
+
+    it('should have the same password for all users', () => {
+      expect(user1.password).to.deep.equal('overlook2021');
+      expect(user4.password).to.deep.equal('overlook2021');
+    });
+
+    it('should be able to hold a user name', () => {
+      expect(user1.userName).to.deep.equal('customer1');
+      expect(user4.userName).to.deep.equal('manager');
+    });
+
+    it('should not be a guest or manager by default', () => {
+      expect(user1.guest).to.deep.equal(false);
+      expect(user4.manager).to.deep.equal(false);
+    });
+
+    it('should hold customerData', () => {
+      expect(user1.customerData).to.deep.equal(customerData);
+      expect(user4.customerData).to.deep.equal(customerData);
+    });
+
+    it('should not have an id or name by default', () => {
+      expect(user1.name).to.deep.equal(undefined);
+      expect(user4.id).to.deep.equal(undefined);
+    });
   });
 
-  it('should be an instance of User', () => {
-    expect(user1).to.be.an.instanceof(User);
-  });
+  describe('User Methods', () => {
+    it('should be able to validate if a user is a guest', () => {
+      const validUser = user1.getUserID();
 
-  it('should have the same password for all users', () => {
-    expect(user1.password).to.deep.equal('overlook2021');
-    expect(user4.password).to.deep.equal('overlook2021');
-  });
+      expect(validUser).to.deep.equal('guest');
+      expect(user1.guest).to.deep.equal(true);
+    });
 
-  it('should be able to hold a user name', () => {
-    expect(user1.userName).to.deep.equal('customer1');
-    expect(user4.userName).to.deep.equal('manager');
-  });
+    it('should be able to validate if a user is not a guest', () => {
+      const invalidUser = user3.getUserID();
 
-  it('should not be a guest or manager by default', () => {
-    expect(user1.guest).to.deep.equal(false);
-    expect(user4.manager).to.deep.equal(false);
-  });
-
-  it('should hold customerData', () => {
-    expect(user1.customerData).to.deep.equal(customerData);
-    expect(user4.customerData).to.deep.equal(customerData);
-  });
-
-  it('should not have an id or name by default', () => {
-    expect(user1.name).to.deep.equal(undefined);
-    expect(user4.id).to.deep.equal(undefined);
+      expect(invalidUser).to.equal(undefined);
+      expect(user1.guest).to.deep.equal(false);
+    });
   });
 })
