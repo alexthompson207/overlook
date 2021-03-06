@@ -1,0 +1,68 @@
+.room-type-form {
+  @include flex-center-column;
+  margin: 2% 0;
+
+    h2, select {
+      margin-top: 5px;
+    }
+}
+
+.return-home-button {
+  margin-top: 10px;
+  padding: .5% 1%;
+  font-size: 14px;
+  border: 3px solid $accent;
+
+    &:hover {
+      cursor: pointer;
+      border-width: 5px;
+    }
+}
+
+.room-filter-inputs {
+  display: flex;
+  flex-direction: row;
+
+    h2 {
+      padding-right: 10px;
+    }
+
+    select {
+      border: 3px solid $accent;
+      font-size: 14px;
+    }
+}
+
+.room-type-inputs:hover {
+  cursor: pointer;
+}
+
+.room-cards-view {
+  @include cards;
+  min-height: 300px;
+}
+
+.room-list {
+  font-size: 1.1rem;
+  padding: 5%;
+
+    li {
+      padding: 3%
+    }
+}
+
+.book-room-button {
+  font-weight: bold;
+  padding: 3%;
+  border-radius: 6px;
+  background-color: $accent;
+  
+    &:hover {
+      cursor: pointer;
+      border-width: 5px;
+    }
+}
+
+.hidden {
+  display: none;
+}

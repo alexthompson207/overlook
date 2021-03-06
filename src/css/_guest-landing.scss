@@ -1,0 +1,78 @@
+.guest-nav {
+  background-color: $nav-bar;
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  border-bottom: solid;
+}
+
+.guest-nav-right {
+  align-self: center;
+
+    h2 {
+      text-align: end;
+    }
+}
+
+.date-view {
+  margin-top: .5%;
+  @include flex-center-column;
+
+    .date-view-title {
+      font-size: 25px;
+    }
+}
+
+.date-view-input {
+  @extend .date-view;
+  width: 20%;
+  border: 5px solid;
+  border-radius: 5px;
+  padding: 1% 3%;
+
+    input {
+      border-color: $black;
+      font-size: 16px;
+      width: 100%;
+      padding: 5%;
+      margin: 1%;
+  }
+
+    button {
+      @extend input;
+      background-color: $accent;
+      padding: 5%;
+      font-size: 16px;
+      margin: 1%; 
+  }
+}
+
+.data-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.guest-bookings-view {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  min-height: 400px;
+    p, li {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+}
+
+.box {
+  background-color: $grey;
+  width: 28%;
+  border-radius: 6px;
+  border: 4px solid;
+  text-align: center;
+  padding: 1%;
+  box-shadow: 2px 2px 6px $grey;
+}
+
+.hidden {
+  display: none;
+}

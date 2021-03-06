@@ -1,0 +1,61 @@
+body {
+  background-color: $light-green;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.login-nav {
+  @include flex-center-column;
+  background-color: $nav-bar;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.login-message {
+  padding-top: 2%;
+}
+
+.login-form {
+  @include flex-center-column;
+  margin-top: 5%;
+
+    input {
+      width: 30%;
+      padding: 1%;
+      margin-bottom: 2%;
+      border-color: $black;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 30%;
+      padding: 1%;
+      background-color: $accent;
+      border-color: $black;
+      font-size: 1rem;
+    }
+}
+
+.login-button:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-error {
+  color: $black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1%;
+}
+
+.hidden {
+  display: none;
+}
