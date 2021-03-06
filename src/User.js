@@ -34,6 +34,7 @@ class User {
   getGuestName() {
     const currentGuest = this.customerData.find(user => user.id === this.id);
     if (currentGuest) {
+      this.name = currentGuest.name;
       return currentGuest.name;
     } else {
       return `Error, guest not on file`

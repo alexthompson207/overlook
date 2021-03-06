@@ -1,3 +1,15 @@
+const customerData = [{
+  "id": 1,
+  "name": "Tony Hawk"
+},
+{
+  "id": 2,
+  "name": "Tom Brady"
+},
+{
+  "id": 40,
+  "name": "Oprah Winfrey"
+}];
 
 const roomData = [
   {
@@ -120,4 +132,4 @@ const bookingData = [
     "roomServiceCharges": []
   }];
 
-export { roomData, bookingData };
+export { roomData, bookingData, customerData };
