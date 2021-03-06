@@ -14,6 +14,8 @@ class User {
     if (this.id > 0 && this.id < 51) {
       this.guest = true;
       return 'guest';
+    } else {
+      return 'Error, not a valid username'
     }
   }
 
@@ -23,7 +25,7 @@ class User {
       this.manager = true;
       return 'manager';
     } else if (this.userName.includes('customer') && password === this.password) {
-      this.getUserID();
+      return this.getUserID();
     } else {
       return 'Error, not a valid username and password';
     }

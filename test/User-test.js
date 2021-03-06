@@ -4,7 +4,7 @@ import User from '../src/User.js'
 
 
 describe('User', () => {
-  let user1, user2, user3, user4, customerData;
+  let user1, user2, user3, user4, user5, customerData;
 
   beforeEach(() => {
     customerData = [{
@@ -24,6 +24,7 @@ describe('User', () => {
     user2 = new User('customer40', customerData);
     user3 = new User('alex', customerData);
     user4 = new User('manager', customerData);
+    user5 = new User('customer55', customerData);
   });
 
   describe('User Properties', () => {
@@ -73,8 +74,46 @@ describe('User', () => {
     it('should be able to validate if a user is not a guest', () => {
       const invalidUser = user3.getUserID();
 
-      expect(invalidUser).to.equal(undefined);
+      expect(invalidUser).to.equal('Error, not a valid username');
       expect(user1.guest).to.deep.equal(false);
+    });
+
+    it('should be able to get a valid user\'s id', () => {
+      user1.determineUserType('overlook2021');
+      user4.determineUserType('overlook2021');
+
+      expect(user1.id).to.deep.equal(1);
+      expect(user4.id).to.deep.equal(0);
+    });
+
+    it('should be able to determine if it\'s user type is a guest', () => {
+      const guest = user1.determineUserType('overlook2021');
+
+      expect(guest).to.deep.equal('guest');
+      expect(user1.guest).to.deep.equal(true);
+      expect(user1.manager).to.deep.equal(false);
+    });
+
+    it('should be able to determine if it\'s user type is a manager', () => {
+      const manager = user4.determineUserType('overlook2021');
+
+      expect(manager).to.deep.equal('manager');
+      expect(user4.manager).to.deep.equal(true);
+      expect(user4.guest).to.deep.equal(false);
+    });
+
+    it('should be able to validate the user\'s username and password', () => {
+      const badUserName = user5.determineUserType('overlook2021');
+      const badUserPassword = user1.determineUserType('password')
+
+      expect(badUserName).to.deep.equal('Error, not a valid username');
+      expect(badUserPassword).to.deep.equal('Error, not a valid username and password');
+    });
+
+    it('should invalidate the user if it\'s username does not contain "customer" or "manager"', () => {
+      const random = user3.determineUserType('overlook2021');
+
+      expect(random).to.deep.equal('Error, not a valid username and password');
     });
   });
 })
