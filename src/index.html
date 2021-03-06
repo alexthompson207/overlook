@@ -9,7 +9,7 @@
 
 <body>
 
-  <section class="login-view" id="loginView">
+  <section class="login-view hidden" id="loginView">
     <nav class="login-nav">
       <h1 class="login-title">Welcome to Overlook Hotel!</h1>
       <h2 class="login-message">Please sign in to view your account</h2>
@@ -23,7 +23,7 @@
       <h3 class="login-error">This Username and Password is not recognized!</h3>
     </form>
   </section>
-  <section class="guest-view hidden" id=guestView>
+  <section class="guest-view" id=guestView>
     <nav class="guest-nav">
       <div class="guest-nav-left">
         <h1 class="guest-nav-title">Overlook Hotel</h1>
@@ -60,6 +60,34 @@
         <p class="display-history">You don't have any stays planned in the future.</p>
         <p class="display-history">You are staying in Room 23 on 03/02/2021</p>
       </article>
+    </section>
+    <section class="guest-search-view">
+      <article class="room-type-form">
+        <h2 class="room-types-open">Available Rooms for 03/02/1991</h2>
+        <h2 class="room-type-title">Filter These Rooms By Type</h2>
+        <div class="room-filter-inputs">
+          <select aria-label="room-type-dropdown" name="room-types" id="roomTypes" class="room-type-inputs">
+            <option value="all rooms">All Rooms</option>
+            <option value="residential suite">Residential Suite</option>
+            <option value="suite">Suite</option>
+            <option value="junior suite">Junior Suite</option>
+            <option value="single room">Single Room</option>
+          </select>
+          <button class="room-type-button">FILTER YOUR SEARCH</button>
+        </div>
+      </article>
+      <button class="return-home-button">Return to your homepage</button>
+      <article class="room-cards-view">
+        <h2 class="room-cards-title">Room 12: Junior Suite</h2>
+        <ul class="room-list">
+          <li class="room-list-item">Number of Beds: 1</li>
+          <li class="room-list-item">Bed Size: Queen</li>
+          <li class="room-list-item">Bidet: true</li>
+          <li class="room-list-item">Cost Per Night: $350.00</li>
+        </ul>
+        <button class="book-room-button">BOOK ROOM</button>
+      </article>
+
     </section>
   </section>
 
