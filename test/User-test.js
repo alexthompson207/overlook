@@ -65,14 +65,14 @@ describe('User', () => {
 
   describe('User Methods', () => {
     it('should be able to validate if a user is a guest', () => {
-      const validUser = user1.getUserID();
+      const validUser = user1.getValidUserID();
 
       expect(validUser).to.deep.equal('guest');
       expect(user1.guest).to.deep.equal(true);
     });
 
     it('should be able to validate if a user is not a guest', () => {
-      const invalidUser = user3.getUserID();
+      const invalidUser = user3.getValidUserID();
 
       expect(invalidUser).to.equal('Error, not a valid username');
       expect(user1.guest).to.deep.equal(false);
@@ -95,7 +95,7 @@ describe('User', () => {
     });
 
     it('should be able to get a valid guests\'s id', () => {
-      user2.getUserID('overlook2021');
+      user2.getValidUserID('overlook2021');
 
       expect(user2.id).to.deep.equal(40);
     });

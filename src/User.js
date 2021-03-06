@@ -9,7 +9,7 @@ class User {
     this.manager = false;
   }
 
-  getUserID() {
+  getValidUserID() {
     this.id = parseInt(this.userName.slice(8));
     if (this.id > 0 && this.id < 51) {
       this.guest = true;
@@ -25,7 +25,7 @@ class User {
       this.manager = true;
       return 'manager';
     } else if (this.userName.includes('customer') && password === this.password) {
-      return this.getUserID();
+      return this.getValidUserID();
     } else {
       return 'Error, not a valid username and password';
     }
