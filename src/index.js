@@ -11,9 +11,12 @@ let roomData;
 let currentGuest;
 let hotel;
 
-
+const avaiableBtn = document.getElementById('dataBtn');
+const guestSearchBar = document.getElementById('roomForm');
 
 window.addEventListener('load', getAllAPIData);
+avaiableBtn.addEventListener('click', displayGuestSearchView);
+guestSearchBar.addEventListener('click', handleGuestSearchClick);
 
 function getAllAPIData() {
   const customers = apiRequest.getCustomerData();
@@ -36,7 +39,6 @@ function createGuest() {
   currentGuest = new Guest('customer1', customerData);
   activateGuestMethods();
   displayGuestDashboard();
-  console.log(currentGuest);
 }
 
 function activateGuestMethods() {
@@ -106,10 +108,6 @@ function displayTodaysDate() {
   dateToday.innerText = `Today's Date: ${date}`;
 }
 
-const avaiableBtn = document.getElementById('dataBtn');
-
-avaiableBtn.addEventListener('click', displayGuestSearchView);
-
 function displayGuestSearchView() {
   hideGuestDashboard();
   showGuestSearchView();
@@ -167,4 +165,25 @@ function displayOpenRooms(openRooms) {
 function displayNoOpenRoomsMessage() {
   const guestSearch = document.querySelector('.guest-search-view');
   guestSearch.innerHTML = `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${hotel.date}. Please adjust your search</h2>`
+}
+
+function handleGuestSearchClick(event) {
+  if (event.target.classList.contains('return-home-button')) {
+    hideGuestSearchView();
+    showGuestDashboard();
+  }
+}
+
+function showGuestDashboard() {
+  const bookingCards = document.querySelector('.guest-bookings-view');
+  const bookingDate = document.querySelector('.book-room-view')
+  removeClass(bookingCards);
+  removeClass(bookingDate);
+}
+
+function hideGuestSearchView() {
+  const guestSearch = document.querySelector('.guest-search-view ');
+  const roomCards = document.querySelector('.room-cards-view')
+  addClass(guestSearch);
+  addClass(roomCards);
 }
