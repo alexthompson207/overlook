@@ -11,13 +11,15 @@ let roomData;
 let currentGuest;
 let hotel;
 
-const avaiableBtn = document.getElementById('dataBtn');
+
 const guestSearchBar = document.getElementById('roomForm');
 const filterOption = document.getElementById('roomTypes');
+const searchByDateSection = document.getElementById('searchSection');
 
 window.addEventListener('load', getAllAPIData);
-avaiableBtn.addEventListener('click', displayGuestSearchView);
 guestSearchBar.addEventListener('click', handleGuestSearchClick);
+searchByDateSection.addEventListener('click', handleSearchByDate);
+
 
 function getAllAPIData() {
   const customers = apiRequest.getCustomerData();
@@ -110,6 +112,7 @@ function displayTodaysDate() {
 }
 
 function displayGuestSearchView() {
+  removeDateInputError();
   hideGuestDashboard();
   showGuestSearchView();
   determineOpenRooms();
@@ -169,23 +172,50 @@ function displayNoOpenRoomsMessage() {
   guestSearch.innerHTML = `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${hotel.date}. Please adjust your search</h2>`
 }
 
+function handleSearchByDate(event) {
+  if (event.target.classList.contains('data-button')) {
+    checkDateInputs(event);
+  }
+}
+
+function checkDateInputs(event) {
+  const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
+  if (currentGuest.date <= dateInput) {
+    displayGuestSearchView();
+  } else {
+    displayDateInputError()
+  }
+}
+
+function displayDateInputError() {
+  removeDateInputError();
+  searchByDateSection.insertAdjacentHTML('afterend', `<h3 class="error date-view-title">Please enter a valid date</h3>`);
+}
+
+function removeDateInputError() {
+  const errorMessage = document.querySelector('.error');
+  if (errorMessage) {
+    errorMessage.remove();
+  }
+}
+
 function handleGuestSearchClick(event) {
   if (event.target.classList.contains('return-home-button')) {
     hideGuestSearchView();
     showGuestDashboard();
   } else if (event.target.classList.contains('room-type-inputs')) {
     filterOption.addEventListener('input', handleFilterRooms)
-
   }
 }
 
 function handleFilterRooms(event) {
+  const filteredRooms = hotel.filterRoomsByType(event.target.value);
   if (event.target.id !== 'roomTypes') {
     return;
-  } else {
-    const filteredRooms = hotel.filterRoomsByType(event.target.value);
-    console.log(event.target.value);
+  } else if (filteredRooms.length > 0) {
     displayOpenRooms(filteredRooms);
+  } else {
+    displayNoOpenRoomsMessage();
   }
 }
 
