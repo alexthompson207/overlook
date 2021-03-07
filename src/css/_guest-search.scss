@@ -64,6 +64,13 @@
     }
 }
 
+.room-types-empty {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 125px 10px;
+}
+
 .hidden {
   display: none;
 }

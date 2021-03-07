@@ -142,6 +142,8 @@ function determineOpenRooms() {
   const openRooms = hotel.findRoomsAvaiable('2021/03/07');
   if (openRooms.length > 0) {
     displayOpenRooms(openRooms);
+  } else {
+    displayNoOpenRoomsMessage();
   }
 }
 
@@ -160,4 +162,9 @@ function displayOpenRooms(openRooms) {
       <button class="book-room-button">BOOK ROOM</button>
     </article>`);
   })
+}
+
+function displayNoOpenRoomsMessage() {
+  const guestSearch = document.querySelector('.guest-search-view');
+  guestSearch.innerHTML = `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${hotel.date}. Please adjust your search</h2>`
 }
