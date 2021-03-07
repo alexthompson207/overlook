@@ -13,6 +13,7 @@ let hotel;
 
 const avaiableBtn = document.getElementById('dataBtn');
 const guestSearchBar = document.getElementById('roomForm');
+const filterOption = document.getElementById('roomTypes');
 
 window.addEventListener('load', getAllAPIData);
 avaiableBtn.addEventListener('click', displayGuestSearchView);
@@ -147,6 +148,7 @@ function determineOpenRooms() {
 
 function displayOpenRooms(openRooms) {
   const openRoomCard = document.querySelector('.room-cards-view');
+  openRoomCard.innerHTML = '';
   openRooms.forEach(room => {
     openRoomCard.insertAdjacentHTML('beforeend', `
       <article class="room-card box">
@@ -171,6 +173,19 @@ function handleGuestSearchClick(event) {
   if (event.target.classList.contains('return-home-button')) {
     hideGuestSearchView();
     showGuestDashboard();
+  } else if (event.target.classList.contains('room-type-inputs')) {
+    filterOption.addEventListener('input', handleFilterRooms)
+
+  }
+}
+
+function handleFilterRooms(event) {
+  if (event.target.id !== 'roomTypes') {
+    return;
+  } else {
+    const filteredRooms = hotel.filterRoomsByType(event.target.value);
+    console.log(event.target.value);
+    displayOpenRooms(filteredRooms);
   }
 }
 
