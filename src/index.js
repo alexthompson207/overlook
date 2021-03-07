@@ -64,6 +64,7 @@ function displayGuestDashboard() {
 
 function displayPastGuestBookings() {
   const pastBookingSection = document.querySelector('.display-past-list');
+  pastBookingSection.innerHTML = '';
   if (currentGuest.pastBookings.length === 0) {
     pastBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You have not stayed here before! We look forward to having you.</p>`);
   } else {
@@ -75,6 +76,7 @@ function displayPastGuestBookings() {
 
 function displayGuestBookingsToday() {
   const todayBookingSection = document.querySelector('.display-today-list');
+  todayBookingSection.innerHTML = '';
   if (currentGuest.currentBookings.length === 0) {
     todayBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays booked today</li>`);
   } else {
@@ -86,6 +88,7 @@ function displayGuestBookingsToday() {
 
 function displayGuestFutureBookings() {
   const futureBookingSection = document.querySelector('.display-future-list');
+  futureBookingSection.innerHTML = '';
   if (currentGuest.futureBookings.length === 0) {
     futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays planned in the future.</li>`);
   } else {
@@ -239,19 +242,47 @@ function hideGuestSearchView() {
 function handleBookRoom(event) {
   if (event.target.classList.contains('book-room-button')) {
     const roomNumber = Number(event.target.parentNode.id);
-    createBookingObject(roomNumber);
+    createBookingObject(roomNumber, event);
   }
 }
 
-function createBookingObject(roomNumber) {
+function createBookingObject(roomNumber, event) {
   const bookingObj = {
     "userID": currentGuest.id,
     "date": hotel.date,
     "roomNumber": roomNumber
   }
-  bookNewRoom(bookingObj);
+  bookNewRoom(bookingObj, event);
 }
 
-function bookNewRoom(body) {
-  console.log(body);
+function bookNewRoom(body, event) {
+  const newBookingPost = apiRequest.postNewRoomBooking(body);
+  newBookingPost
+    .then(response => checkResponse(response, event))
+    .then(() => updateBookingHistory());
+}
+
+function checkResponse(response, event) {
+  if (response.ok) {
+    displayConfirmation(event);
+    return response.json();
+  } else {
+    displayBookingError(event);
+  }
+}
+
+function displayConfirmation(event) {
+  const bookBtn = event.target;
+  bookBtn.insertAdjacentHTML('afterend', `<h3>Booking Successful</h3>`);
+  bookBtn.remove();
+}
+
+function displayBookingError(event) {
+  removeDateInputError();
+  const bookBtn = event.target;
+  bookBtn.insertAdjacentHTML('afterend', `<h3 class="error">Please Try Again</h3>`);
+}
+
+function updateBookingHistory() {
+  getAllAPIData();
 }
