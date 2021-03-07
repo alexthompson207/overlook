@@ -91,7 +91,7 @@ function displayGuestFutureBookings() {
 function displayGuestName() {
   currentGuest.getValidUserID();
   const guestName = document.querySelector('.guest-nav-name')
-  guestName.innerText = currentGuest.getGuestName();
+  guestName.innerText = `Welcome ${currentGuest.getGuestName()}!`;
 }
 
 function displayGuestCost() {
