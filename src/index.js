@@ -61,7 +61,7 @@ function displayGuestDashboard() {
 }
 
 function displayPastGuestBookings() {
-  const pastBookingSection = document.querySelector('.guest-bookings-past');
+  const pastBookingSection = document.querySelector('.display-past-list');
   if (currentGuest.pastBookings.length === 0) {
     pastBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You have not stayed here before! We look forward to having you.</p>`);
   } else {
@@ -72,9 +72,9 @@ function displayPastGuestBookings() {
 }
 
 function displayGuestBookingsToday() {
-  const todayBookingSection = document.querySelector('.guest-bookings-today');
+  const todayBookingSection = document.querySelector('.display-today-list');
   if (currentGuest.currentBookings.length === 0) {
-    todayBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You don't have any stays booked today</p>`);
+    todayBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays booked today</li>`);
   } else {
     currentGuest.currentBookings.forEach(booking => {
       todayBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You are staying in Room ${booking.roomNumber} tonight</li>`);
@@ -83,9 +83,9 @@ function displayGuestBookingsToday() {
 }
 
 function displayGuestFutureBookings() {
-  const futureBookingSection = document.querySelector('.guest-bookings-future');
+  const futureBookingSection = document.querySelector('.display-future-list');
   if (currentGuest.futureBookings.length === 0) {
-    futureBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You don't have any stays planned in the future.</p>`);
+    futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays planned in the future.</li>`);
   } else {
     currentGuest.futureBookings.forEach(booking => {
       futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${booking.date}</li>`);
