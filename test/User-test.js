@@ -48,7 +48,7 @@ describe('User', () => {
     });
 
     it('should be able to hold today\'s date', () => {
-      expect(user1.currentDate).to.equal('2021/03/07');
+      expect(user1.date).to.equal('2021/03/07');
 
     });
 

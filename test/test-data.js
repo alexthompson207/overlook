@@ -120,6 +120,13 @@ const bookingData = [
   },
   {
     "id": "5fwrgu4i7k55hl6tc",
+    "userID": 7,
+    "date": "2020/01/31",
+    "roomNumber": 2,
+    "roomServiceCharges": []
+  },
+  {
+    "id": "5fwrgu4i7k55hl6tc",
     "userID": 22,
     "date": "2020/01/31",
     "roomNumber": 3,
@@ -137,6 +144,13 @@ const bookingData = [
     "userID": 44,
     "date": "2020/01/31",
     "roomNumber": 5,
+    "roomServiceCharges": []
+  },
+  {
+    "id": "5fwrgu4i7k55hl6te",
+    "userID": 50,
+    "date": "2020/01/31",
+    "roomNumber": 12,
     "roomServiceCharges": []
   }];
 

@@ -4,7 +4,7 @@ import Guest from '../src/Guest.js';
 import Hotel from '../src/Hotel.js';
 import { roomData, bookingData, customerData } from './test-data';
 
-describe.only('Guest', () => {
+describe('Guest', () => {
   let guest1, guest2, guest3, hotel;
 
   beforeEach(() => {

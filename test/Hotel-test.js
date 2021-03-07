@@ -41,38 +41,7 @@ describe('Hotel', () => {
 
   describe('Hotel Methods', () => {
     it('should get all avaiable rooms from a given date', () => {
-      expect(hotel.findRoomsAvaiable('2020/04/22')).to.deep.equal([{
-        "number": 2,
-        "roomType": "suite",
-        "bidet": false,
-        "bedSize": "full",
-        "numBeds": 2,
-        "costPerNight": 477.38
-      },
-      {
-        "number": 3,
-        "roomType": "single room",
-        "bidet": false,
-        "bedSize": "king",
-        "numBeds": 1,
-        "costPerNight": 491.14
-      },
-      {
-        "number": 4,
-        "roomType": "single room",
-        "bidet": false,
-        "bedSize": "queen",
-        "numBeds": 1,
-        "costPerNight": 429.44
-      },
-      {
-        "number": 5,
-        "roomType": "single room",
-        "bidet": true,
-        "bedSize": "queen",
-        "numBeds": 2,
-        "costPerNight": 340.17
-      }]);
+      expect(hotel.findRoomsAvaiable('2020/04/22')).to.deep.equal([roomData[1], roomData[2], roomData[3], roomData[4], roomData[5]]);
     });
 
     it('should return an empty array if no rooms are avaiable', () => {
@@ -99,7 +68,7 @@ describe('Hotel', () => {
 
     it('should return all avaiable rooms if filter type is "All Rooms"', () => {
       hotel.findRoomsAvaiable('2020/04/22');
-      expect(hotel.filterRoomsByType('All Rooms')).to.deep.equal([roomData[1], roomData[2], roomData[3], roomData[4]]);
+      expect(hotel.filterRoomsByType('All Rooms')).to.deep.equal([roomData[1], roomData[2], roomData[3], roomData[4], roomData[5]]);
     });
   });
 })
