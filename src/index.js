@@ -8,8 +8,8 @@ import { apiRequest } from './fetchAPIData';
 let customerData;
 let bookingData;
 let roomData;
-let currentUser;
 let currentGuest;
+let hotel;
 
 
 
@@ -28,15 +28,15 @@ function assignAPIData(customers, bookings, rooms) {
   customerData = customers;
   bookingData = bookings;
   roomData = rooms;
-  currentUser = customerData[0];
+  hotel = new Hotel(roomData, bookingData, '2021/03/07');
   createGuest();
-
 }
 
 function createGuest() {
   currentGuest = new Guest('customer1', customerData);
   activateGuestMethods();
   displayGuestDashboard();
+  console.log(currentGuest);
 }
 
 function activateGuestMethods() {
@@ -104,4 +104,60 @@ function displayTodaysDate() {
   const date = new Date().toLocaleDateString('en-US');
   console.log(date);
   dateToday.innerText = `Today's Date: ${date}`;
+}
+
+const avaiableBtn = document.getElementById('dataBtn');
+
+avaiableBtn.addEventListener('click', displayGuestSearchView);
+
+function displayGuestSearchView() {
+  hideGuestDashboard();
+  showGuestSearchView();
+  determineOpenRooms();
+}
+
+function hideGuestDashboard() {
+  const bookingCards = document.querySelector('.guest-bookings-view');
+  const bookingDate = document.querySelector('.book-room-view')
+  addClass(bookingCards);
+  addClass(bookingDate);
+}
+
+function showGuestSearchView() {
+  const guestSearch = document.querySelector('.guest-search-view ');
+  const roomCards = document.querySelector('.room-cards-view')
+  removeClass(guestSearch);
+  removeClass(roomCards);
+}
+
+function addClass(element, className) {
+  element.classList.add(className || 'hidden');
+}
+
+function removeClass(element, className) {
+  element.classList.remove(className || 'hidden');
+}
+
+function determineOpenRooms() {
+  const openRooms = hotel.findRoomsAvaiable('2021/03/07');
+  if (openRooms.length > 0) {
+    displayOpenRooms(openRooms);
+  }
+}
+
+function displayOpenRooms(openRooms) {
+  const openRoomCard = document.querySelector('.room-cards-view');
+  openRooms.forEach(room => {
+    openRoomCard.insertAdjacentHTML('beforeend', `
+      <article class="room-card box">
+      <h2 class="room-card-title">Room ${room.number}: ${room.roomType}</h2>
+      <ul class="room-list">
+        <li class="room-list-item">Number of Beds: ${room.numBeds}</li>
+        <li class="room-list-item">Bed Size: ${room.bedSize}</li>
+        <li class="room-list-item">Bidet: ${room.bidet}</li>
+        <li class="room-list-item">Cost Per Night: $${room.costPerNight}</li>
+      </ul>
+      <button class="book-room-button">BOOK ROOM</button>
+    </article>`);
+  })
 }

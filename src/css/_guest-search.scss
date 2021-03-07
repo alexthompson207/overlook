@@ -40,6 +40,7 @@
 .room-cards-view {
   @include cards;
   min-height: 300px;
+  flex-wrap: wrap;
 }
 
 .room-list {
