@@ -4,7 +4,7 @@ import Guest from '../src/Guest.js';
 import Hotel from '../src/Hotel.js';
 import { roomData, bookingData, customerData } from './test-data';
 
-describe('Hotel', () => {
+describe('Guest', () => {
   let guest1, guest2, hotel;
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('Hotel', () => {
     hotel = new Hotel(roomData, bookingData, '2020/01/10');
   });
 
-  describe.only('Guest Properties', () => {
+  describe('Guest Properties', () => {
 
     it('should be a function', () => {
       expect(Guest).to.be.a('function');
@@ -25,7 +25,6 @@ describe('Hotel', () => {
 
     it('should have an id', () => {
       guest1.getValidUserID();
-      guest1.getGuestName();
       expect(guest1.id).to.deep.equal(1);
     });
 
@@ -43,7 +42,31 @@ describe('Hotel', () => {
 
     it('should have not have spent any money to start', () => {
       expect(guest1.totalAmountSpent).to.deep.equal(0);
-
     });
   });
+
+  describe('Guest Methods', () => {
+    it('should be able to find a guest\'s booking history', () => {
+      expect(guest1.findGuestBookingHistory(bookingData)).to.deep.equal([{
+        "id": "5fwrgu4i7k55hl6t8",
+        "userID": 1,
+        "date": "2020/02/05",
+        "roomNumber": 12,
+        "roomServiceCharges": []
+      }]);
+    });
+
+    it('should return an empty array if guest has no booking history', () => {
+      expect(guest2.findGuestBookingHistory(bookingData)).to.deep.equal([]);
+    });
+
+    it('should return an empty array if guest has no booking history', () => {
+      expect(guest2.findGuestBookingHistory(bookingData)).to.deep.equal([]);
+    });
+
+    it('should be able to caculate the total amount spent on rooms for a guest', () => {
+      expect(guest1.calculateAmountSpent(bookingData, roomData)).to.deep.equal('340.17');
+    });
+
+  })
 })

@@ -3,7 +3,7 @@ const expect = chai.expect;
 import User from '../src/User.js'
 
 
-describe('User', () => {
+describe.only('User', () => {
   let user1, user2, user3, user4, user5, customerData;
 
   beforeEach(() => {
@@ -45,6 +45,11 @@ describe('User', () => {
     it('should be able to hold a user name', () => {
       expect(user1.userName).to.deep.equal('customer1');
       expect(user4.userName).to.deep.equal('manager');
+    });
+
+    it('should be able to hold today\'s date', () => {
+      expect(user1.currentDate).to.equal('2021/03/07');
+
     });
 
     it('should not be a guest or manager by default', () => {

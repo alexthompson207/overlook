@@ -7,8 +7,26 @@ class Guest extends User {
     this.currentBookings = [];
     this.futureBookings = [];
     this.totalAmountSpent = 0;
-    // this.id = this.getValidUserID();
-    // this.name = this.getGuestName();
+  }
+
+  findGuestBookingHistory(bookingData) {
+    this.getValidUserID();
+    return bookingData.filter(booking => booking.userID === this.id);
+  }
+
+  calculateAmountSpent(bookingData, roomData) {
+    const bookingHistory = this.findGuestBookingHistory(bookingData);
+    const totalAmount = roomData.reduce((total, room) => {
+      bookingHistory.forEach(booking => {
+        if (booking.roomNumber === room.number) {
+          total += room.costPerNight;
+        }
+      })
+      return total;
+    }, 0);
+    return this.totalAmountSpent = totalAmount.toFixed(2);
+
+
   }
 }
 

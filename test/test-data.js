@@ -51,6 +51,14 @@ const roomData = [
     "bedSize": "queen",
     "numBeds": 2,
     "costPerNight": 340.17
+  },
+  {
+    "number": 12,
+    "roomType": "single room",
+    "bidet": true,
+    "bedSize": "queen",
+    "numBeds": 2,
+    "costPerNight": 340.17
   }];
 
 const bookingData = [
