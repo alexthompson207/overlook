@@ -47,6 +47,11 @@ describe('User', () => {
       expect(user4.userName).to.deep.equal('manager');
     });
 
+    it('should be able to hold today\'s date', () => {
+      expect(user1.date).to.equal('2021/03/07');
+
+    });
+
     it('should not be a guest or manager by default', () => {
       expect(user1.guest).to.deep.equal(false);
       expect(user4.manager).to.deep.equal(false);

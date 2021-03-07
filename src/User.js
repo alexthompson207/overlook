@@ -5,6 +5,7 @@ class User {
     this.id;
     this.customerData = customerData;
     this.name;
+    this.date = new Date().toISOString().slice(0, 10).replace(/-/g, '/');
     this.guest = false;
     this.manager = false;
   }
@@ -34,6 +35,7 @@ class User {
   getGuestName() {
     const currentGuest = this.customerData.find(user => user.id === this.id);
     if (currentGuest) {
+      this.name = currentGuest.name;
       return currentGuest.name;
     } else {
       return `Error, guest not on file`
@@ -41,26 +43,4 @@ class User {
   }
 }
 
-
 export default User;
-
-// Login:  username: customer50 (where 50 is the ID of the user)
-//         password: overlook2021
-
-// User Class (userName, customers)
-// properties: UserName taken from login (userName, customers), determines type of user Guest or Manager
-
-// id: is number 1-50 take from userName, use slice, check that it's a number, set id = 0 if manager
-// username: userName  -- ex. customer50 where 50 is user ID
-// password: password -- overlook2021 -- same for both manager and user // do i need this?
-// customers: holds all customerData from API
-// name; - to be determined from findUserName method
-
-// methods: 
-// determineUser(userName) : determines if user is a Guest or Manager 
-//   return  'guest' if id is between 1- 50;
-//   return manger if id === 0
-//   return error message if password or id doesn't match guest or user;
-
-// findUserName() : iterate over customer data, find where userId matches customer id
-//   return name; set name to property.
