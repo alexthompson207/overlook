@@ -34,9 +34,9 @@ function assignAPIData(customers, bookings, rooms) {
 }
 
 function createGuest() {
-  currentGuest = new Guest(customer1, bookingData);
+  currentGuest = new Guest('customer1', bookingData);
   activateGuestMethods();
-  displayGuestDashBoard();
+  displayGuestDashboard();
 
 }
 
@@ -47,6 +47,32 @@ function activateGuestMethods() {
   currentGuest.sortBookingsByDate('future')
 }
 
-function displayGuestDashBoard() {
+function displayGuestDashboard() {
+  displayPastGuestBookings();
+  displayGuestBookingsToday();
+  displayGuestFutureBookings();
+}
 
+function displayPastGuestBookings() {
+  const pastBookingSection = document.querySelector('.guest-bookings-past').children[2];
+  currentGuest.pastBookings.forEach(booking => {
+    const pastCard = `<li class="display-history">You stayed in room ${booking.roomNumber} on ${booking.date}</li>`;
+    pastBookingSection.insertAdjacentHTML('beforeend', pastCard);
+  })
+}
+
+function displayGuestBookingsToday() {
+  const todayBookingSection = document.querySelector('.guest-bookings-today').children[2];
+  currentGuest.currentBookings.forEach(booking => {
+    const currentCard = `<li class="display-history">You stayed in room ${booking.roomNumber} on ${booking.date}</li>`;
+    todayBookingSection.insertAdjacentHTML('beforeend', currentCard);
+  })
+}
+
+function displayGuestFutureBookings() {
+  const futureBookingSection = document.querySelector('.guest-bookings-future').children[2];
+  currentGuest.currentBookings.forEach(booking => {
+    const futureCard = `<li class="display-history">You stayed in room ${booking.roomNumber} on ${booking.date}</li>`;
+    futureBookingSection.insertAdjacentHTML('beforeend', futureCard);
+  })
 }
