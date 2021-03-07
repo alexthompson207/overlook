@@ -8,6 +8,9 @@ import { apiRequest } from './fetchAPIData';
 let customerData;
 let bookingData;
 let roomData;
+let currentUser;
+let currentGuest;
+
 
 
 window.addEventListener('load', getAllAPIData);
@@ -22,11 +25,28 @@ function getAllAPIData() {
 }
 
 function assignAPIData(customers, bookings, rooms) {
-  console.log(customers);
-  console.log(bookings);
-  console.log(rooms);
-
   customerData = customers;
   bookingData = bookings;
   roomData = rooms;
+  currentUser = customerData[0];
+  createGuest();
+
+}
+
+function createGuest() {
+  currentGuest = new Guest(customer1, bookingData);
+  activateGuestMethods();
+  displayGuestDashBoard();
+
+}
+
+function activateGuestMethods() {
+  currentGuest.calculateAmountSpent(bookingData, roomData);
+  currentGuest.sortBookingHistory(bookingData)
+  currentGuest.sortBookingsByDate('past')
+  currentGuest.sortBookingsByDate('future')
+}
+
+function displayGuestDashBoard() {
+
 }
