@@ -15,10 +15,12 @@ let hotel;
 const guestSearchBar = document.getElementById('roomForm');
 const filterOption = document.getElementById('roomTypes');
 const searchByDateSection = document.getElementById('searchSection');
+const avaiableRoomCard = document.getElementById('roomCards');
 
 window.addEventListener('load', getAllAPIData);
 guestSearchBar.addEventListener('click', handleGuestSearchClick);
 searchByDateSection.addEventListener('click', handleSearchByDate);
+avaiableRoomCard.addEventListener('click', handleBookRoom)
 
 
 function getAllAPIData() {
@@ -111,11 +113,11 @@ function displayTodaysDate() {
   dateToday.innerText = `Today's Date: ${date}`;
 }
 
-function displayGuestSearchView() {
+function displayGuestSearchView(date) {
   removeDateInputError();
   hideGuestDashboard();
   showGuestSearchView();
-  determineOpenRooms();
+  determineOpenRooms(date);
 }
 
 function hideGuestDashboard() {
@@ -140,8 +142,8 @@ function removeClass(element, className) {
   element.classList.remove(className || 'hidden');
 }
 
-function determineOpenRooms() {
-  const openRooms = hotel.findRoomsAvaiable('2021/03/07');
+function determineOpenRooms(date) {
+  const openRooms = hotel.findRoomsAvaiable(date);
   if (openRooms.length > 0) {
     displayOpenRooms(openRooms);
   } else {
@@ -154,7 +156,7 @@ function displayOpenRooms(openRooms) {
   openRoomCard.innerHTML = '';
   openRooms.forEach(room => {
     openRoomCard.insertAdjacentHTML('beforeend', `
-      <article class="room-card box">
+      <article class="room-card box" id=${room.number}>
       <h2 class="room-card-title">Room ${room.number}: ${room.roomType}</h2>
       <ul class="room-list">
         <li class="room-list-item">Number of Beds: ${room.numBeds}</li>
@@ -181,7 +183,8 @@ function handleSearchByDate(event) {
 function checkDateInputs(event) {
   const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
   if (currentGuest.date <= dateInput) {
-    displayGuestSearchView();
+    hotel.date = dateInput;
+    displayGuestSearchView(dateInput);
   } else {
     displayDateInputError()
   }
@@ -231,4 +234,21 @@ function hideGuestSearchView() {
   const roomCards = document.querySelector('.room-cards-view')
   addClass(guestSearch);
   addClass(roomCards);
+}
+
+function handleBookRoom(event) {
+  if (event.target.classList.contains('book-room-button')) {
+    const roomNumber = Number(event.target.parentNode.id);
+    createBookingObject(roomNumber);
+  }
+}
+
+function createBookingObject(roomNumber) {
+  const bookingObj = {
+    "userID": currentGuest.id,
+    "date": hotel.date,
+    "roomNumber": roomNumber
+  }
+  console.log(bookingObj);
+  console.log(hotel.date);
 }
