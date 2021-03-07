@@ -1,3 +1,4 @@
+import { bookingData } from '../test/test-data';
 import User from './User'
 
 class Guest extends User {
@@ -25,35 +26,37 @@ class Guest extends User {
       return total;
     }, 0);
     return this.totalAmountSpent = totalAmount.toFixed(2);
+  }
 
+  sortBookingHistory(bookingData) {
+    const bookingHistory = this.findGuestBookingHistory(bookingData);
+    bookingHistory.forEach(booking => {
+      if (booking.date === this.date) {
+        this.currentBookings.push(booking);
+      } else if (Date.parse(booking.date) > Date.parse(this.date)) {
+        this.futureBookings.push(booking);
+      } else {
+        this.pastBookings.push(booking);
+      }
+    })
+  }
 
+  sortBookingsByDate(timePeriod) {
+    if (this.futureBookings.length > 0 && timePeriod === 'future') {
+      this.futureBookings.sort((a, b) => {
+        let aDate = Date.parse(a.date);
+        let bDate = Date.parse(b.date);
+        return bDate - aDate;
+      });
+    } else if (this.pastBookings.length > 0 && timePeriod === 'past') {
+      this.pastBookings.sort((a, b) => {
+        let aDate = Date.parse(a.date);
+        let bDate = Date.parse(b.date);
+        return aDate - bDate;
+      })
+    }
   }
 }
 
 export default Guest;
 
-// Guest Class: for a single customer/user --> extends User Class? child of User?
-// if it is Child of User inherits id, username, customers, and name properties
-
-// constructor(userName, customers)
-// properties:
-// from User Class:
-// id: 
-// userName:
-// customers:
-// name: this.findUserName();
-
-// Guest Properties
-// previousBookings: []
-// futureBookings: []
-// currentBooking ?
-// totalAmountSpent: 0
-
-// methods:
-
-// findBookingHistory() : returns all bookings matched with user by id
-// calculateAmountSpent() : returns total cost of booking histroy for user by costPerNight
-// sortBookingHistory() : filter booking history, past, 
-// present, future booking, 
-// set respective property to result,
-//  ex. past bookings array = this.previousBookings;

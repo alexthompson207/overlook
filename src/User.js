@@ -5,7 +5,7 @@ class User {
     this.id;
     this.customerData = customerData;
     this.name;
-    this.currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, '/');
+    this.date = new Date().toISOString().slice(0, 10).replace(/-/g, '/');
     this.guest = false;
     this.manager = false;
   }
