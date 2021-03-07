@@ -249,6 +249,9 @@ function createBookingObject(roomNumber) {
     "date": hotel.date,
     "roomNumber": roomNumber
   }
-  console.log(bookingObj);
-  console.log(hotel.date);
+  bookNewRoom(bookingObj);
+}
+
+function bookNewRoom(body) {
+  console.log(body);
 }
