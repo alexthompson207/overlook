@@ -40,6 +40,7 @@
 .room-cards-view {
   @include cards;
   min-height: 300px;
+  flex-wrap: wrap;
 }
 
 .room-list {
@@ -61,6 +62,13 @@
       cursor: pointer;
       border-width: 5px;
     }
+}
+
+.room-types-empty {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 125px 10px;
 }
 
 .hidden {
