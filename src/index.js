@@ -76,6 +76,8 @@ function createGuest(currentUser, password) {
   currentGuest = new Guest(currentUser.userName, customerData);
   activateGuestMethods();
   displayGuestDashboard();
+  // document.getElementById('loginUsername').removeAttribute("required");
+  // document.getElementById('loginPassword').removeAttribute("required");
 }
 
 function activateGuestMethods() {
