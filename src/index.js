@@ -69,7 +69,7 @@ function displayPastGuestBookings() {
     pastBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You have not stayed here before! We look forward to having you.</p>`);
   } else {
     currentGuest.pastBookings.forEach(booking => {
-      pastBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${booking.date}</li>`);
+      pastBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${new Date(booking.date).toLocaleDateString()}</li>`);
     });
   }
 }
@@ -93,7 +93,7 @@ function displayGuestFutureBookings() {
     futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays planned in the future.</li>`);
   } else {
     currentGuest.futureBookings.forEach(booking => {
-      futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${booking.date}</li>`);
+      futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${new Date(booking.date).toLocaleDateString()}</li>`);
     });
   }
 }
@@ -131,8 +131,11 @@ function hideGuestDashboard() {
 }
 
 function showGuestSearchView() {
-  const guestSearch = document.querySelector('.guest-search-view ');
-  const roomCards = document.querySelector('.room-cards-view')
+  const guestSearch = document.querySelector('.guest-search-view');
+  const roomCards = document.querySelector('.room-cards-view');
+  const searchDate = document.querySelector('.room-types-open');
+  searchDate.innerText = `Available Rooms for ${new Date(hotel.date).toLocaleDateString()}`;
+  console.log(typeof searchDate.innerText);
   removeClass(guestSearch);
   removeClass(roomCards);
 }
