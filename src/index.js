@@ -112,7 +112,6 @@ function displayGuestCost() {
 function displayTodaysDate() {
   const dateToday = document.querySelector('.guest-nav-date');
   const date = new Date().toLocaleDateString('en-US');
-  console.log(date);
   dateToday.innerText = `Today's Date: ${date}`;
 }
 
@@ -135,7 +134,6 @@ function showGuestSearchView() {
   const roomCards = document.querySelector('.room-cards-view');
   const searchDate = document.querySelector('.room-types-open');
   searchDate.innerText = `Available Rooms for ${new Date(hotel.date).toLocaleDateString()}`;
-  console.log(typeof searchDate.innerText);
   removeClass(guestSearch);
   removeClass(roomCards);
 }
@@ -190,7 +188,7 @@ function checkDateInputs(event) {
   const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
   if (currentGuest.date <= dateInput) {
     hotel.date = dateInput;
-    console.log(currentGuest.date);
+    filterOption.selectedIndex = 0;
     displayGuestSearchView(dateInput);
   } else {
     displayDateInputError()
