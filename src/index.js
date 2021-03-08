@@ -9,6 +9,7 @@ let customerData;
 let bookingData;
 let roomData;
 let currentGuest;
+let currentUser;
 let hotel;
 
 
@@ -16,8 +17,10 @@ const guestSearchBar = document.getElementById('roomForm');
 const filterOption = document.getElementById('roomTypes');
 const searchByDateSection = document.getElementById('searchSection');
 const avaiableRoomCard = document.getElementById('roomCards');
+const loginForm = document.getElementById('loginForm');
 
 window.addEventListener('load', getAllAPIData);
+loginForm.addEventListener('click', handleUserLogin);
 guestSearchBar.addEventListener('click', handleGuestSearchClick);
 searchByDateSection.addEventListener('click', handleSearchByDate);
 avaiableRoomCard.addEventListener('click', handleBookRoom)
@@ -37,13 +40,44 @@ function assignAPIData(customers, bookings, rooms) {
   bookingData = bookings;
   roomData = rooms;
   hotel = new Hotel(roomData, bookingData, '2021/03/07');
-  createGuest();
 }
 
-function createGuest() {
-  currentGuest = new Guest('customer1', customerData);
+function handleUserLogin(event) {
+  const userNameInput = document.getElementById('loginUsername');
+  const userPasswordInput = document.getElementById('loginPassword');
+  if (event.target.className === 'login-button') {
+    determineUserType(userNameInput.value, userPasswordInput.value);
+    clearLoginForm(userNameInput, userPasswordInput);
+  }
+}
+
+function determineUserType(userNameInput, userPasswordInput) {
+  currentUser = new User(userNameInput, customerData);
+  const userType = currentUser.determineUserType(userPasswordInput);
+  removeDateInputError();
+  if (userType === 'guest') {
+    createGuest(currentUser, userPasswordInput);
+  } else {
+    displayLoginFormError();
+  }
+}
+
+function displayLoginFormError() {
+  loginForm.insertAdjacentHTML('afterend', `<h3 class="login-error error" id="loginError">This Username and Password is not recognized!</h3>`)
+}
+
+function clearLoginForm(userName, userPassword) {
+  userName.value = '';
+  userPassword.value = '';
+}
+
+function createGuest(currentUser, password) {
+  currentUser.determineUserType(password);
+  currentGuest = new Guest(currentUser.userName, customerData);
   activateGuestMethods();
   displayGuestDashboard();
+  // document.getElementById('loginUsername').removeAttribute("required");
+  // document.getElementById('loginPassword').removeAttribute("required");
 }
 
 function activateGuestMethods() {
@@ -53,13 +87,22 @@ function activateGuestMethods() {
   currentGuest.sortBookingsByDate('future')
 }
 
+
 function displayGuestDashboard() {
+  displayGuestDashboardView();
   displayPastGuestBookings();
   displayGuestBookingsToday();
   displayGuestFutureBookings();
   displayGuestName();
   displayGuestCost();
   displayTodaysDate();
+}
+
+function displayGuestDashboardView() {
+  const guestView = document.getElementById('guestView');
+  const loginView = document.getElementById('loginView');
+  addClass(loginView);
+  removeClass(guestView);
 }
 
 function displayPastGuestBookings() {
@@ -112,7 +155,6 @@ function displayGuestCost() {
 function displayTodaysDate() {
   const dateToday = document.querySelector('.guest-nav-date');
   const date = new Date().toLocaleDateString('en-US');
-  console.log(date);
   dateToday.innerText = `Today's Date: ${date}`;
 }
 
@@ -135,7 +177,6 @@ function showGuestSearchView() {
   const roomCards = document.querySelector('.room-cards-view');
   const searchDate = document.querySelector('.room-types-open');
   searchDate.innerText = `Available Rooms for ${new Date(hotel.date).toLocaleDateString()}`;
-  console.log(typeof searchDate.innerText);
   removeClass(guestSearch);
   removeClass(roomCards);
 }
@@ -190,7 +231,7 @@ function checkDateInputs(event) {
   const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
   if (currentGuest.date <= dateInput) {
     hotel.date = dateInput;
-    console.log(currentGuest.date);
+    filterOption.selectedIndex = 0;
     displayGuestSearchView(dateInput);
   } else {
     displayDateInputError()
