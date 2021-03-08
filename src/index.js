@@ -45,7 +45,20 @@ function assignAPIData(customers, bookings, rooms) {
 function handleUserLogin(event) {
   const userNameInput = document.getElementById('loginUsername');
   const userPasswordInput = document.getElementById('loginPassword');
+  if (event.target.className === 'login-button') {
+    event.preventDefault();
+    determineUserType(userNameInput, userPasswordInput);
+    clearLoginForm(userNameInput, userPasswordInput);
+  }
+}
 
+function determineUserType(userNameInput, userPasswordInput) {
+
+}
+
+function clearLoginForm(userName, userPassword) {
+  userName.value = '';
+  userPassword.value = '';
 }
 
 function createGuest() {
