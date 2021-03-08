@@ -74,7 +74,6 @@ function clearLoginForm(userName, userPassword) {
 function createGuest(currentUser, password) {
   currentUser.determineUserType(password);
   currentGuest = new Guest(currentUser.userName, customerData);
-  console.log(currentGuest);
   activateGuestMethods();
   displayGuestDashboard();
 }
@@ -86,13 +85,22 @@ function activateGuestMethods() {
   currentGuest.sortBookingsByDate('future')
 }
 
+
 function displayGuestDashboard() {
+  displayGuestDashboardView();
   displayPastGuestBookings();
   displayGuestBookingsToday();
   displayGuestFutureBookings();
   displayGuestName();
   displayGuestCost();
   displayTodaysDate();
+}
+
+function displayGuestDashboardView() {
+  const guestView = document.getElementById('guestView');
+  const loginView = document.getElementById('loginView');
+  addClass(loginView);
+  removeClass(guestView);
 }
 
 function displayPastGuestBookings() {
