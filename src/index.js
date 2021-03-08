@@ -9,6 +9,7 @@ let customerData;
 let bookingData;
 let roomData;
 let currentGuest;
+let currentUser;
 let hotel;
 
 
@@ -39,21 +40,30 @@ function assignAPIData(customers, bookings, rooms) {
   bookingData = bookings;
   roomData = rooms;
   hotel = new Hotel(roomData, bookingData, '2021/03/07');
-  createGuest();
 }
 
 function handleUserLogin(event) {
   const userNameInput = document.getElementById('loginUsername');
   const userPasswordInput = document.getElementById('loginPassword');
   if (event.target.className === 'login-button') {
-    event.preventDefault();
-    determineUserType(userNameInput, userPasswordInput);
+    determineUserType(userNameInput.value, userPasswordInput.value);
     clearLoginForm(userNameInput, userPasswordInput);
   }
 }
 
 function determineUserType(userNameInput, userPasswordInput) {
+  currentUser = new User(userNameInput, customerData);
+  const userType = currentUser.determineUserType(userPasswordInput);
+  removeDateInputError();
+  if (userType === 'guest') {
+    createGuest(currentUser, userPasswordInput);
+  } else {
+    displayLoginFormError();
+  }
+}
 
+function displayLoginFormError() {
+  loginForm.insertAdjacentHTML('afterend', `<h3 class="login-error error" id="loginError">This Username and Password is not recognized!</h3>`)
 }
 
 function clearLoginForm(userName, userPassword) {
@@ -61,8 +71,10 @@ function clearLoginForm(userName, userPassword) {
   userPassword.value = '';
 }
 
-function createGuest() {
-  currentGuest = new Guest('customer1', customerData);
+function createGuest(currentUser, password) {
+  currentUser.determineUserType(password);
+  currentGuest = new Guest(currentUser.userName, customerData);
+  console.log(currentGuest);
   activateGuestMethods();
   displayGuestDashboard();
 }
