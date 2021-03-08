@@ -39,10 +39,11 @@ function assignAPIData(customers, bookings, rooms) {
   customerData = customers;
   bookingData = bookings;
   roomData = rooms;
-  hotel = new Hotel(roomData, bookingData, '2021/03/07');
+  hotel = new Hotel(roomData, bookingData, '2021/03/08');
 }
 
 function handleUserLogin(event) {
+  event.preventDefault();
   const userNameInput = document.getElementById('loginUsername');
   const userPasswordInput = document.getElementById('loginPassword');
   if (event.target.className === 'login-button') {
@@ -76,15 +77,13 @@ function createGuest(currentUser, password) {
   currentGuest = new Guest(currentUser.userName, customerData);
   activateGuestMethods();
   displayGuestDashboard();
-  // document.getElementById('loginUsername').removeAttribute("required");
-  // document.getElementById('loginPassword').removeAttribute("required");
 }
 
 function activateGuestMethods() {
   currentGuest.calculateAmountSpent(bookingData, roomData);
-  currentGuest.sortBookingHistory(bookingData)
-  currentGuest.sortBookingsByDate('past')
-  currentGuest.sortBookingsByDate('future')
+  currentGuest.sortBookingHistory(bookingData);
+  currentGuest.sortBookingsByDate('past');
+  currentGuest.sortBookingsByDate('future');
 }
 
 
@@ -234,7 +233,7 @@ function checkDateInputs(event) {
     filterOption.selectedIndex = 0;
     displayGuestSearchView(dateInput);
   } else {
-    displayDateInputError()
+    displayDateInputError();
   }
 }
 
@@ -254,6 +253,7 @@ function handleGuestSearchClick(event) {
   if (event.target.classList.contains('return-home-button')) {
     hideGuestSearchView();
     showGuestDashboard();
+    console.log(currentGuest);
   } else if (event.target.classList.contains('room-type-inputs')) {
     filterOption.addEventListener('input', handleFilterRooms)
   }
