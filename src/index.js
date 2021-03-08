@@ -11,6 +11,7 @@ let roomData;
 let currentGuest;
 let currentUser;
 let hotel;
+let today;
 
 
 const guestSearchBar = document.getElementById('roomForm');
@@ -35,11 +36,24 @@ function getAllAPIData() {
   })
 }
 
+function getCurrentDate() {
+  const unformattedDate = new Date;
+  const dateString = unformattedDate.toLocaleDateString("fr-CA", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+  today = dateString.split('-').join('/');
+  console.log(today);
+}
+
 function assignAPIData(customers, bookings, rooms) {
+  getCurrentDate();
   customerData = customers;
   bookingData = bookings;
   roomData = rooms;
-  hotel = new Hotel(roomData, bookingData, '2021/03/08');
+  console.log(bookingData);
+  hotel = new Hotel(roomData, bookingData, today);
 }
 
 function handleUserLogin(event) {
@@ -75,23 +89,23 @@ function clearLoginForm(userName, userPassword) {
 function createGuest(currentUser, password) {
   currentUser.determineUserType(password);
   currentGuest = new Guest(currentUser.userName, customerData);
-  activateGuestMethods();
-  displayGuestDashboard();
+  activateGuestMethods(currentGuest);
+  displayGuestDashboard(currentGuest);
 }
 
-function activateGuestMethods() {
-  currentGuest.calculateAmountSpent(bookingData, roomData);
-  currentGuest.sortBookingHistory(bookingData);
-  currentGuest.sortBookingsByDate('past');
-  currentGuest.sortBookingsByDate('future');
+function activateGuestMethods(guest) {
+  guest.calculateAmountSpent(bookingData, roomData);
+  guest.sortBookingHistory(bookingData);
+  guest.sortBookingsByDate('past');
+  guest.sortBookingsByDate('future');
 }
 
 
-function displayGuestDashboard() {
+function displayGuestDashboard(hotelGuest) {
   displayGuestDashboardView();
-  displayPastGuestBookings();
-  displayGuestBookingsToday();
-  displayGuestFutureBookings();
+  displayPastGuestBookings(hotelGuest);
+  displayGuestBookingsToday(hotelGuest);
+  displayGuestFutureBookings(hotelGuest);
   displayGuestName();
   displayGuestCost();
   displayTodaysDate();
@@ -104,37 +118,37 @@ function displayGuestDashboardView() {
   removeClass(guestView);
 }
 
-function displayPastGuestBookings() {
+function displayPastGuestBookings(guest) {
   const pastBookingSection = document.querySelector('.display-past-list');
   pastBookingSection.innerHTML = '';
-  if (currentGuest.pastBookings.length === 0) {
+  if (guest.pastBookings.length === 0) {
     pastBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You have not stayed here before! We look forward to having you.</p>`);
   } else {
-    currentGuest.pastBookings.forEach(booking => {
+    guest.pastBookings.forEach(booking => {
       pastBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${new Date(booking.date).toLocaleDateString()}</li>`);
     });
   }
 }
 
-function displayGuestBookingsToday() {
+function displayGuestBookingsToday(guest) {
   const todayBookingSection = document.querySelector('.display-today-list');
   todayBookingSection.innerHTML = '';
-  if (currentGuest.currentBookings.length === 0) {
+  if (guest.currentBookings.length === 0) {
     todayBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays booked today</li>`);
   } else {
-    currentGuest.currentBookings.forEach(booking => {
+    guest.currentBookings.forEach(booking => {
       todayBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You are staying in Room ${booking.roomNumber} tonight</li>`);
     });
   }
 }
 
-function displayGuestFutureBookings() {
+function displayGuestFutureBookings(guest) {
   const futureBookingSection = document.querySelector('.display-future-list');
   futureBookingSection.innerHTML = '';
-  if (currentGuest.futureBookings.length === 0) {
+  if (guest.futureBookings.length === 0) {
     futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays planned in the future.</li>`);
   } else {
-    currentGuest.futureBookings.forEach(booking => {
+    guest.futureBookings.forEach(booking => {
       futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${new Date(booking.date).toLocaleDateString()}</li>`);
     });
   }
@@ -228,7 +242,7 @@ function handleSearchByDate(event) {
 
 function checkDateInputs(event) {
   const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
-  if (currentGuest.date <= dateInput) {
+  if (today <= dateInput) {
     hotel.date = dateInput;
     filterOption.selectedIndex = 0;
     displayGuestSearchView(dateInput);
@@ -253,7 +267,8 @@ function handleGuestSearchClick(event) {
   if (event.target.classList.contains('return-home-button')) {
     hideGuestSearchView();
     showGuestDashboard();
-    console.log(currentGuest);
+    displayGuestBookingsToday(currentGuest);
+    displayGuestFutureBookings(currentGuest);
   } else if (event.target.classList.contains('room-type-inputs')) {
     filterOption.addEventListener('input', handleFilterRooms)
   }
@@ -304,12 +319,13 @@ function bookNewRoom(body, event) {
   const newBookingPost = apiRequest.postNewRoomBooking(body);
   newBookingPost
     .then(response => checkResponse(response, event))
-    .then(() => updateBookingHistory());
+    .then(() => updateBookingHistory(newBookingPost));
 }
 
 function checkResponse(response, event) {
   if (response.ok) {
     displayConfirmation(event);
+    console.log('before', bookingData);
     return response.json();
   } else {
     displayBookingError(event);
@@ -328,6 +344,10 @@ function displayBookingError(event) {
   bookBtn.insertAdjacentHTML('afterend', `<h3 class="error">Please Try Again</h3>`);
 }
 
-function updateBookingHistory() {
+function updateBookingHistory(newBookingPost) {
   getAllAPIData();
+  activateGuestMethods(currentGuest);
+  console.log(bookingData);
+  console.log(newBookingPost);
+
 }
