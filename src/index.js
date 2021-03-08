@@ -190,6 +190,7 @@ function checkDateInputs(event) {
   const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
   if (currentGuest.date <= dateInput) {
     hotel.date = dateInput;
+    console.log(currentGuest.date);
     displayGuestSearchView(dateInput);
   } else {
     displayDateInputError()
