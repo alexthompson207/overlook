@@ -16,8 +16,10 @@ const guestSearchBar = document.getElementById('roomForm');
 const filterOption = document.getElementById('roomTypes');
 const searchByDateSection = document.getElementById('searchSection');
 const avaiableRoomCard = document.getElementById('roomCards');
+const loginForm = document.getElementById('loginForm');
 
 window.addEventListener('load', getAllAPIData);
+loginForm.addEventListener('click', handleUserLogin);
 guestSearchBar.addEventListener('click', handleGuestSearchClick);
 searchByDateSection.addEventListener('click', handleSearchByDate);
 avaiableRoomCard.addEventListener('click', handleBookRoom)
@@ -38,6 +40,12 @@ function assignAPIData(customers, bookings, rooms) {
   roomData = rooms;
   hotel = new Hotel(roomData, bookingData, '2021/03/07');
   createGuest();
+}
+
+function handleUserLogin(event) {
+  const userNameInput = document.getElementById('loginUsername');
+  const userPasswordInput = document.getElementById('loginPassword');
+
 }
 
 function createGuest() {
