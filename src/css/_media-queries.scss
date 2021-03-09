@@ -46,6 +46,15 @@
   .box {
     width: 80%;
   }
+
+  .room-filter-inputs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .room-type-form {
+    text-align: center;
+  }
 }
 
 .hidden {
