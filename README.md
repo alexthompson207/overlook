@@ -43,6 +43,7 @@ This is a hotel booking application, that allows for hotel customers to book a r
 1. Implement a staff or manager view/login. This manager view could show the hotel's revenue for that date, the number of rooms available that day, and the percent occupancy of the hotel. Furthermore they would be able to search through all the bookings and cancel a guest's booking.
 2. There are opportunities to refactor this application, and create more reusable functions to DRY up code.
 3. Add images and styling to the UI.
+4. Adjust the date to reflect the user's timezone.
 
 
 ## Technologies Used
