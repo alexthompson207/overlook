@@ -11,6 +11,7 @@ let roomData;
 let currentGuest;
 let currentUser;
 let hotel;
+let today;
 
 
 const guestSearchBar = document.getElementById('roomForm');
@@ -35,14 +36,26 @@ function getAllAPIData() {
   })
 }
 
+function getCurrentDate() {
+  const unformattedDate = new Date;
+  const dateString = unformattedDate.toLocaleDateString("fr-CA", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+  today = dateString.split('-').join('/');
+}
+
 function assignAPIData(customers, bookings, rooms) {
+  getCurrentDate();
   customerData = customers;
   bookingData = bookings;
   roomData = rooms;
-  hotel = new Hotel(roomData, bookingData, '2021/03/07');
+  hotel = new Hotel(roomData, bookingData, today);
 }
 
 function handleUserLogin(event) {
+  event.preventDefault();
   const userNameInput = document.getElementById('loginUsername');
   const userPasswordInput = document.getElementById('loginPassword');
   if (event.target.className === 'login-button') {
@@ -53,6 +66,7 @@ function handleUserLogin(event) {
 
 function determineUserType(userNameInput, userPasswordInput) {
   currentUser = new User(userNameInput, customerData);
+  currentUser.date = today;
   const userType = currentUser.determineUserType(userPasswordInput);
   removeDateInputError();
   if (userType === 'guest') {
@@ -74,17 +88,16 @@ function clearLoginForm(userName, userPassword) {
 function createGuest(currentUser, password) {
   currentUser.determineUserType(password);
   currentGuest = new Guest(currentUser.userName, customerData);
-  activateGuestMethods();
+  currentGuest.date = today;
+  updateGuestRecords();
   displayGuestDashboard();
-  // document.getElementById('loginUsername').removeAttribute("required");
-  // document.getElementById('loginPassword').removeAttribute("required");
 }
 
-function activateGuestMethods() {
+function updateGuestRecords() {
   currentGuest.calculateAmountSpent(bookingData, roomData);
-  currentGuest.sortBookingHistory(bookingData)
-  currentGuest.sortBookingsByDate('past')
-  currentGuest.sortBookingsByDate('future')
+  currentGuest.sortBookingHistory(bookingData);
+  currentGuest.sortBookingsByDate('past');
+  currentGuest.sortBookingsByDate('future');
 }
 
 
@@ -108,7 +121,7 @@ function displayGuestDashboardView() {
 function displayPastGuestBookings() {
   const pastBookingSection = document.querySelector('.display-past-list');
   pastBookingSection.innerHTML = '';
-  if (currentGuest.pastBookings.length === 0) {
+  if (!currentGuest.pastBookings.length) {
     pastBookingSection.insertAdjacentHTML('beforeend', `<p class="display-history">You have not stayed here before! We look forward to having you.</p>`);
   } else {
     currentGuest.pastBookings.forEach(booking => {
@@ -120,7 +133,7 @@ function displayPastGuestBookings() {
 function displayGuestBookingsToday() {
   const todayBookingSection = document.querySelector('.display-today-list');
   todayBookingSection.innerHTML = '';
-  if (currentGuest.currentBookings.length === 0) {
+  if (!currentGuest.currentBookings.length) {
     todayBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays booked today</li>`);
   } else {
     currentGuest.currentBookings.forEach(booking => {
@@ -132,11 +145,11 @@ function displayGuestBookingsToday() {
 function displayGuestFutureBookings() {
   const futureBookingSection = document.querySelector('.display-future-list');
   futureBookingSection.innerHTML = '';
-  if (currentGuest.futureBookings.length === 0) {
+  if (!currentGuest.futureBookings.length) {
     futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You don't have any stays planned in the future.</li>`);
   } else {
     currentGuest.futureBookings.forEach(booking => {
-      futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You stayed in room ${booking.roomNumber} on ${new Date(booking.date).toLocaleDateString()}</li>`);
+      futureBookingSection.insertAdjacentHTML('beforeend', `<li class="display-history">You'll be staying in room ${booking.roomNumber} on ${new Date(booking.date).toLocaleDateString()}</li>`);
     });
   }
 }
@@ -217,8 +230,10 @@ function displayOpenRooms(openRooms) {
 }
 
 function displayNoOpenRoomsMessage() {
-  const guestSearch = document.querySelector('.guest-search-view');
-  guestSearch.innerHTML = `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${hotel.date}. Please adjust your search</h2>`
+  const openRoomCard = document.querySelector('.room-cards-view');
+  const guestSearch = document.getElementById('roomCards');
+  openRoomCard.innerHTML = ''
+  guestSearch.insertAdjacentHTML('afterbegin', `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${new Date(hotel.date).toLocaleDateString()}. Please adjust your search</h2>`);
 }
 
 function handleSearchByDate(event) {
@@ -229,12 +244,12 @@ function handleSearchByDate(event) {
 
 function checkDateInputs(event) {
   const dateInput = event.target.previousElementSibling.value.replaceAll("-", "/");
-  if (currentGuest.date <= dateInput) {
+  if (today <= dateInput) {
     hotel.date = dateInput;
     filterOption.selectedIndex = 0;
     displayGuestSearchView(dateInput);
   } else {
-    displayDateInputError()
+    displayDateInputError();
   }
 }
 
@@ -263,7 +278,7 @@ function handleFilterRooms(event) {
   const filteredRooms = hotel.filterRoomsByType(event.target.value);
   if (event.target.id !== 'roomTypes') {
     return;
-  } else if (filteredRooms.length > 0) {
+  } else if (filteredRooms.length) {
     displayOpenRooms(filteredRooms);
   } else {
     displayNoOpenRoomsMessage();
@@ -301,10 +316,19 @@ function createBookingObject(roomNumber, event) {
 }
 
 function bookNewRoom(body, event) {
-  const newBookingPost = apiRequest.postNewRoomBooking(body);
-  newBookingPost
+  apiRequest.postNewRoomBooking(body)
     .then(response => checkResponse(response, event))
-    .then(() => updateBookingHistory());
+    .then((booking) => updateBookingHistory(booking))
+    .catch(error => displayServerError(error))
+}
+
+function displayServerError(error) {
+  if (error.message === 'Failed to fetch') {
+    const errorText = document.querySelectorAll('.room-card');
+    errorText.forEach(button => {
+      button.innerText = 'Please reload and try again';
+    })
+  }
 }
 
 function checkResponse(response, event) {
@@ -328,6 +352,10 @@ function displayBookingError(event) {
   bookBtn.insertAdjacentHTML('afterend', `<h3 class="error">Please Try Again</h3>`);
 }
 
-function updateBookingHistory() {
-  getAllAPIData();
+function updateBookingHistory(booking) {
+  bookingData.push(booking.newBooking);
+  updateGuestRecords();
+  displayGuestCost();
+  displayGuestBookingsToday(currentGuest);
+  displayGuestFutureBookings(currentGuest);
 }

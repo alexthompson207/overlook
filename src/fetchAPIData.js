@@ -4,21 +4,21 @@ export const apiRequest = {
     return fetch('http://localhost:3001/api/v1/bookings')
       .then(response => response.json())
       .then(data => data.bookings)
-      .catch(error => console.log(error.message))
+      .catch(error => displayError(error))
   },
 
   getCustomerData() {
     return fetch('http://localhost:3001/api/v1/customers')
       .then(response => response.json())
       .then(data => data.customers)
-      .catch(error => console.log(error.message))
+      .catch(error => displayError(error))
   },
 
   getRoomData() {
     return fetch('http://localhost:3001/api/v1/rooms')
       .then(response => response.json())
       .then(data => data.rooms)
-      .catch(error => console.log(error.message))
+      .catch(error => displayError(error))
   },
 
   postNewRoomBooking(body) {
@@ -30,6 +30,12 @@ export const apiRequest = {
       body: JSON.stringify(body),
     })
       .then(response => response)
-      .catch(error => console.log(error.message));
+  }
+}
+
+const displayError = (error) => {
+  if (error.message = 'Failed to fetch') {
+    const mainPage = document.getElementById('loginView');
+    mainPage.innerText = 'Oops, looks like something went wrong please refresh and try again';
   }
 }
