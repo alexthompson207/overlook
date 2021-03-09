@@ -1,4 +1,3 @@
-
 import './css/index.scss';
 import User from './User';
 import Guest from './Guest';
@@ -12,7 +11,6 @@ let currentGuest;
 let currentUser;
 let hotel;
 let today;
-
 
 const guestSearchBar = document.getElementById('roomForm');
 const filterOption = document.getElementById('roomTypes');
@@ -99,7 +97,6 @@ function updateGuestRecords() {
   currentGuest.sortBookingsByDate('past');
   currentGuest.sortBookingsByDate('future');
 }
-
 
 function displayGuestDashboard() {
   displayGuestDashboardView();
