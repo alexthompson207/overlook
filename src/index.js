@@ -95,9 +95,7 @@ function createGuest(currentUser, password) {
 
 function updateGuestRecords() {
   currentGuest.calculateAmountSpent(bookingData, roomData);
-  console.log(currentGuest.currentBookings);
   currentGuest.sortBookingHistory(bookingData);
-  console.log(currentGuest.currentBookings);
   currentGuest.sortBookingsByDate('past');
   currentGuest.sortBookingsByDate('future');
 }
@@ -174,7 +172,6 @@ function displayTodaysDate() {
 }
 
 function displayGuestSearchView(date) {
-  console.log(currentGuest);
   removeDateInputError();
   hideGuestDashboard();
   showGuestSearchView();
@@ -206,7 +203,6 @@ function removeClass(element, className) {
 }
 
 function determineOpenRooms(date) {
-  console.log(date);
   const openRooms = hotel.findRoomsAvaiable(date);
   if (openRooms.length > 0) {
     displayOpenRooms(openRooms);

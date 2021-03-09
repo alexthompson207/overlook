@@ -30,7 +30,6 @@ export const apiRequest = {
       body: JSON.stringify(body),
     })
       .then(response => response)
-    // .catch(error => displayError(error))
   }
 }
 
