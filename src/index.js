@@ -317,6 +317,16 @@ function bookNewRoom(body, event) {
   apiRequest.postNewRoomBooking(body)
     .then(response => checkResponse(response, event))
     .then((booking) => updateBookingHistory(booking))
+    .catch(error => displayServerError(error))
+}
+
+function displayServerError(error) {
+  if (error.message === 'Failed to fetch') {
+    const errorText = document.querySelectorAll('.room-card');
+    errorText.forEach(button => {
+      button.innerText = 'Please reload and try again';
+    })
+  }
 }
 
 function checkResponse(response, event) {
