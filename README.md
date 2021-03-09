@@ -27,16 +27,22 @@
 
 ## About the Project
 
-In this project, our job was to take code that was written by another student and transform it into a beautiful, functional application. 
+This is a hotel booking application, that allows for hotel customers to book a room and view past, current, and future booking reservations. Upon successfully logging in, a guest is provided with a unique dashboard of their booking history and the total amount they have spent at the hotel. Guests can also search for available rooms, filter their search by room type, and book a room at the hotel. Upon booking a room, their dashboard view is updated to reflect their new booking and new total amount spent. 
 
 
-## Project Goals 
+## Learning Goals 
 1. Make network requests to API endpoints to retrieve and manipulate data.
-2. Refactor pre-existing code and use inheritance to DRY up repetitive logic.
-3. Ensure our app is following best accessibility practices.
-4. Leverage Sass to DRY up CSS.
-5. Incorporate Webpack to streamline your workflow process.
-6. Make our app responsive so that content can be viewed on all devices.
+2. Ensure the application is following best accessibility practices.
+3. Leverage Sass to DRY up CSS.
+4. Build a robust test suite that tests happy/sad paths.
+5. Make the application responsive so that content can be viewed on all devices.
+
+
+## Future Iterations
+
+1. Implement a staff or manager view/login. This manager view could show the hotel's revenue for that date, the number of rooms available that day, and the percent occupancy of the hotel. Furthermore they would be able to search through all the bookings and cancel a guest's booking.
+2. There are opportunities to refactor this application, and create more reusable functions to DRY up code.
+3. Add images and styling to the UI.
 
 
 ## Technologies Used
@@ -55,8 +61,8 @@ In this project, our job was to take code that was written by another student an
 
 
 ## Contributers
-* [Alex Thompson](https://github.com/alexthompson207)
-* [Anneke Miers](https://github.com/aemiers)
+* [Alex Thompson](https://github.com/alexthompson207) - Application Creator
+* [Elizabeth Hahn](https://github.com/elizhahn) - Peer Reviewer, responsible for two pull request reviews and merges.
 
 
 ## Contact
