@@ -87,11 +87,11 @@ function clearLoginForm(userName, userPassword) {
 function createGuest(currentUser, password) {
   currentUser.determineUserType(password);
   currentGuest = new Guest(currentUser.userName, customerData);
-  activateGuestMethods();
+  updateGuestRecords();
   displayGuestDashboard();
 }
 
-function activateGuestMethods() {
+function updateGuestRecords() {
   currentGuest.calculateAmountSpent(bookingData, roomData);
   console.log(currentGuest.currentBookings);
   currentGuest.sortBookingHistory(bookingData);
@@ -267,8 +267,6 @@ function handleGuestSearchClick(event) {
   if (event.target.classList.contains('return-home-button')) {
     hideGuestSearchView();
     showGuestDashboard();
-    // displayGuestBookingsToday(currentGuest);
-    // displayGuestFutureBookings(currentGuest);
   } else if (event.target.classList.contains('room-type-inputs')) {
     filterOption.addEventListener('input', handleFilterRooms)
   }
@@ -318,7 +316,7 @@ function createBookingObject(roomNumber, event) {
 function bookNewRoom(body, event) {
   apiRequest.postNewRoomBooking(body)
     .then(response => checkResponse(response, event))
-    .then((booking) => updateBookingHistory(booking));
+    .then((booking) => updateBookingHistory(booking))
 }
 
 function checkResponse(response, event) {
@@ -343,13 +341,9 @@ function displayBookingError(event) {
 }
 
 function updateBookingHistory(booking) {
-  // hotel.bookings.push(booking.newBooking);
-  console.log(booking.newBooking);
-
   bookingData.push(booking.newBooking);
-  activateGuestMethods();
+  updateGuestRecords();
+  displayGuestCost();
   displayGuestBookingsToday(currentGuest);
   displayGuestFutureBookings(currentGuest);
-
-
 }
