@@ -30,6 +30,6 @@ export const apiRequest = {
       body: JSON.stringify(body),
     })
       .then(response => response)
-      .catch(error => console.log(error.message));
+      .catch(error => console.log(error.message))
   }
 }
