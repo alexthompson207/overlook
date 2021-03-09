@@ -234,8 +234,10 @@ function displayOpenRooms(openRooms) {
 }
 
 function displayNoOpenRoomsMessage() {
-  const guestSearch = document.querySelector('.guest-search-view');
-  guestSearch.innerHTML = `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${new Date(hotel.date).toLocaleDateString()}. Please adjust your search</h2>`
+  const openRoomCard = document.querySelector('.room-cards-view');
+  const guestSearch = document.getElementById('roomCards');
+  openRoomCard.innerHTML = ''
+  guestSearch.insertAdjacentHTML('afterbegin', `<h2 class="room-types-empty">We are so sorry, we don't have any open rooms on ${new Date(hotel.date).toLocaleDateString()}. Please adjust your search</h2>`);
 }
 
 function handleSearchByDate(event) {
