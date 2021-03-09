@@ -8,17 +8,17 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
-  - [Final Product](#final-product)
-  - [Project Before](#project-before)
-- [Project Goals](#project-goals)
+
 - [Installation](#installation)
-- [Technologies Used](#technologies-used)
 - [Functionality](#functionality)
   - [General](#general)
   - [Error Handling](#error-handling)
   - [Mobile View](#mobile-view)
   - [Tablet View](#tablet-view)
   - [Accessibility](#accessibility)
+- [Learning Goals](#learning-goals)
+- [Future Iteration](#future-iterations)
+- [Technologies Used](#technologies-used)
 - [Contributors](#contributors)
 - [Contact](#contact)
 
