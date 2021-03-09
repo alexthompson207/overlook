@@ -31,9 +31,9 @@ class Guest extends User {
   sortBookingHistory(bookingData) {
     const bookingHistory = this.findGuestBookingHistory(bookingData);
     bookingHistory.forEach(booking => {
-      if (booking.date === this.date) {
+      if (booking.date === this.date && !this.currentBookings.includes(booking)) {
         this.currentBookings.push(booking);
-      } else if (Date.parse(booking.date) > Date.parse(this.date)) {
+      } else if (Date.parse(booking.date) > Date.parse(this.date) && !this.futureBookings.includes(booking)) {
         this.futureBookings.push(booking);
       } else {
         this.pastBookings.push(booking);

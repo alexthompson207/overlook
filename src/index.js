@@ -92,7 +92,6 @@ function createGuest(currentUser, password) {
 }
 
 function activateGuestMethods() {
-  console.log(currentGuest.currentBookings);
   currentGuest.calculateAmountSpent(bookingData, roomData);
   console.log(currentGuest.currentBookings);
   currentGuest.sortBookingHistory(bookingData);
@@ -348,9 +347,9 @@ function updateBookingHistory(booking) {
   console.log(booking.newBooking);
 
   bookingData.push(booking.newBooking);
-
   activateGuestMethods();
   displayGuestBookingsToday(currentGuest);
   displayGuestFutureBookings(currentGuest);
+
 
 }
