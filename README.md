@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/alexthompson207/overlook">
-<!--     <img src="./src/images/tractor.svg" alt="Tractor Logo" width="80" height="80"> -->
+    <img src="./planning/hotel.svg" alt="Image of a Hotel" width="80" height="80">
   </a>
   
 ## Table of Contents
