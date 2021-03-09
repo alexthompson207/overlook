@@ -1,24 +1,13 @@
 import chai from 'chai';
 const expect = chai.expect;
-import User from '../src/User.js'
+import User from '../src/User.js';
+import { customerData } from './test-data';
 
 
 describe('User', () => {
-  let user1, user2, user3, user4, user5, customerData;
+  let user1, user2, user3, user4, user5;
 
   beforeEach(() => {
-    customerData = [{
-      "id": 1,
-      "name": "Tony Hawk"
-    },
-    {
-      "id": 2,
-      "name": "Tom Brady"
-    },
-    {
-      "id": 40,
-      "name": "Oprah Winfrey"
-    }];
 
     user1 = new User('customer1', customerData);
     user2 = new User('customer40', customerData);
@@ -48,8 +37,9 @@ describe('User', () => {
     });
 
     it('should be able to hold today\'s date', () => {
-      expect(user1.date).to.equal('2021/03/07');
+      user1.date = '2021/03/07';
 
+      expect(user1.date).to.equal('2021/03/07');
     });
 
     it('should not be a guest or manager by default', () => {
