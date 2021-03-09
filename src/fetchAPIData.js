@@ -34,7 +34,7 @@ export const apiRequest = {
 }
 
 const displayError = (error) => {
-  if (error.message = 'Failed to fetch') {
+  if (error.message === 'Failed to fetch') {
     const mainPage = document.getElementById('loginView');
     mainPage.innerText = 'Oops, looks like something went wrong please refresh and try again';
   }
