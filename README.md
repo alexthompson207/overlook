@@ -7,20 +7,19 @@
   
 ## Table of Contents
 
-- [About the Project](#about-the-project)
-
-- [Installation](#installation)
-- [Functionality](#functionality)
+* [About the Project](#about-the-project)
+* [Installation](#installation)
+* [Functionality](#functionality)
   - [General](#general)
   - [Error Handling](#error-handling)
   - [Mobile View](#mobile-view)
   - [Tablet View](#tablet-view)
   - [Accessibility](#accessibility)
-- [Learning Goals](#learning-goals)
-- [Future Iteration](#future-iterations)
-- [Technologies Used](#technologies-used)
-- [Contributors](#contributors)
-- [Contact](#contact)
+* [Learning Goals](#learning-goals)
+* [Future Iteration](#future-iterations)
+* [Technologies Used](#technologies-used)
+* [Contributors](#contributors)
+* [Contact](#contact)
 
 
 
