@@ -11,9 +11,6 @@
 * [Installation](#installation)
 * [Functionality](#functionality)
   * [General](#general)
-  * [Error Handling](#error-handling)
-  * [Mobile View](#mobile-view)
-  * [Tablet View](#tablet-view)
   * [Accessibility](#accessibility)
 * [Learning Goals](#learning-goals)
 * [Future Iteration](#future-iterations)
@@ -28,6 +25,22 @@
 
 This is a hotel booking application, that allows for hotel customers to book a room and view past, current, and future booking reservations. Upon successfully logging in, a guest is provided with a unique dashboard of their booking history and the total amount they have spent at the hotel. Guests can also search for available rooms, filter their search by room type, and book a room at the hotel. Upon booking a room, their dashboard view is updated to reflect their new booking and new total amount spent. 
 
+## Installation
+
+To view the code locally:
+
+1. Clone this [repo](https://github.com/alexthompson207/overlook)
+```sh
+git clone https://github.com/alexthompson207/overlook
+```
+2. Install NPM packages
+```sh
+npm install
+```
+4. To review all of the tests run
+```sh
+npm test
+```
 
 ## Learning Goals 
 1. Make network requests to API endpoints to retrieve and manipulate data.
