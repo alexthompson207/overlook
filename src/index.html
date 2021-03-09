@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
   <section class="login-view" id="loginView">
     <nav class="login-nav">
       <h1 class="login-title">Welcome to Overlook Hotel!</h1>
@@ -20,109 +19,66 @@
       <input aria-label="password-input" type="password" placeholder="Enter Your Password" name="password"
         id="loginPassword" class="login-username-input" required>
       <button class="login-button" type="sumbit" id="loginBtn">Log In</button>
-      <!-- <h3 class="login-error">This Username and Password is not recognized!</h3> -->
     </form>
   </section>
-  <section class="guest-view hidden" id=guestView>
-    <nav class="guest-nav">
-      <div class="guest-nav-left">
-        <h1 class="guest-nav-title">Overlook Hotel</h1>
-        <h2 class="guest-nav-date">Today's Date: MM/DD/YEAR</h2>
-      </div>
-      <div class="guest-nav-right">
-        <h2 class="guest-nav-name">Welcome Alex Thompson!</h2>
-        <h2 class="guest-nav-cost">You have spent $1,000 on your stays so far!</h2>
-      </div>
-    </nav>
-    <section class="book-room-view">
-      <div class="date-view">
-        <h3 class="date-view-title">Make a Booking</h3>
-        <div class="date-view-input" id="searchSection">
-          <input aria-label="select-date-for-booking" type="date" id="dateInput" class="date-input" min="2021-03-05"
-            max="2025-12-31" required pattern="\d{4}/\d{2}/\d{2}">
-          <button id="dataBtn" class="data-button">Check Availability</button>
-        </div>
-      </div>
-    </section>
-    <section class="guest-bookings-view">
-      <article class="guest-bookings-past box">
-        <h2 class="past-title">Past Bookings</h2>
-        <ul class="display-past-list">
-          <!-- <p class="display-history">You have not stayed here before! We look forward to having you.</p>
-        <li class="display-history">You stayed in room 20 on 03/02/2021</li> -->
-        </ul>
-      </article>
-      <article class="guest-bookings-today box">
-        <h2 class="today-title">Today's Bookings</h2>
-        <ul class="display-today-list">
-          <!-- <p class="display-history">You don't have any stays booked today</p>
-        <li class="display-history">You are staying in Room 23 tonight</li> -->
-        </ul>
-      </article>
-      <article class="guest-bookings-future box">
-        <h2 class="future-title">Future Bookings</h2>
-        <ul class="display-future-list">
-          <!-- <p class="display-history">You don't have any stays planned in the future.</p>
-        <li class="display-history">You are staying in Room 23 on 03/02/2021</li> -->
-        </ul>
-      </article>
-    </section>
-    <section class="guest-search-view hidden">
-      <article class="room-type-form" id="roomForm">
-        <h2 class="room-types-open">Available Rooms for 03/02/1991</h2>
-        <div class="room-filter-inputs">
-          <h2 class="room-type-title">Filter These Rooms By Type:</h2>
-          <select aria-label="room-type-dropdown" name="room-types" id="roomTypes" class="room-type-inputs">
-            <option value="all rooms">All Rooms</option>
-            <option value="residential suite">Residential Suite</option>
-            <option value="suite">Suite</option>
-            <option value="junior suite">Junior Suite</option>
-            <option value="single room">Single Room</option>
-          </select>
-          <!-- <button class="room-type-button">FILTER YOUR SEARCH</button> -->
-        </div>
-        <button class="return-home-button">Return to your homepage</button>
-      </article>
-      <section id="roomCards" class="room-cards-view hidden">
-        <!-- <article class="room-card box">
-          <h2 class="room-card-title">Room 12: Junior Suite</h2>
-          <ul class="room-list">
-            <li class="room-list-item">Number of Beds: 1</li>
-            <li class="room-list-item">Bed Size: Queen</li>
-            <li class="room-list-item">Bidet: true</li>
-            <li class="room-list-item">Cost Per Night: $350.00</li>
-          </ul>
-          <button class="book-room-button">BOOK ROOM</button>
-        </article>
-        <article class="room-card box">
-          <h2 class="room-card-title">Room 12: Junior Suite</h2>
-          <ul class="room-list">
-            <li class="room-list-item">Number of Beds: 1</li>
-            <li class="room-list-item">Bed Size: Queen</li>
-            <li class="room-list-item">Bidet: true</li>
-            <li class="room-list-item">Cost Per Night: $350.00</li>
-          </ul>
-          <button class="book-room-button">BOOK ROOM</button>
-        </article>
-        <article class="room-card box">
-          <h2 class="room-card-title">Room 12: Junior Suite</h2>
-          <ul class="room-list">
-            <li class="room-list-item">Number of Beds: 1</li>
-            <li class="room-list-item">Bed Size: Queen</li>
-            <li class="room-list-item">Bidet: true</li>
-            <li class="room-list-item">Cost Per Night: $350.00</li>
-          </ul>
-          <button class="book-room-button">BOOK ROOM</button>
-        </article> -->
-      </section>
-
-    </section>
-  </section>
-
   <main>
-
-
-
+    <section class="guest-view hidden" id=guestView>
+      <nav class="guest-nav">
+        <div class="guest-nav-left">
+          <h1 class="guest-nav-title">Overlook Hotel</h1>
+          <h2 class="guest-nav-date">Today's Date: MM/DD/YEAR</h2>
+        </div>
+        <div class="guest-nav-right">
+          <h2 class="guest-nav-name">Welcome Alex Thompson!</h2>
+          <h2 class="guest-nav-cost">You have spent $1,000 on your stays so far!</h2>
+        </div>
+      </nav>
+      <section class="book-room-view">
+        <div class="date-view">
+          <h3 class="date-view-title">Make a Booking</h3>
+          <div class="date-view-input" id="searchSection">
+            <input aria-label="select-date-for-booking" type="date" id="dateInput" class="date-input" min="2021-03-05"
+              max="2025-12-31" required pattern="\d{4}/\d{2}/\d{2}">
+            <button id="dataBtn" class="data-button">Check Availability</button>
+          </div>
+        </div>
+      </section>
+      <section class="guest-bookings-view">
+        <article class="guest-bookings-past box">
+          <h2 class="past-title">Past Bookings</h2>
+          <ul class="display-past-list">
+          </ul>
+        </article>
+        <article class="guest-bookings-today box">
+          <h2 class="today-title">Today's Bookings</h2>
+          <ul class="display-today-list">
+          </ul>
+        </article>
+        <article class="guest-bookings-future box">
+          <h2 class="future-title">Future Bookings</h2>
+          <ul class="display-future-list">
+          </ul>
+        </article>
+      </section>
+      <section class="guest-search-view hidden">
+        <article class="room-type-form" id="roomForm">
+          <h2 class="room-types-open">Available Rooms for 03/02/1991</h2>
+          <div class="room-filter-inputs">
+            <h2 class="room-type-title">Filter These Rooms By Type:</h2>
+            <select aria-label="room-type-dropdown" name="room-types" id="roomTypes" class="room-type-inputs">
+              <option value="all rooms">All Rooms</option>
+              <option value="residential suite">Residential Suite</option>
+              <option value="suite">Suite</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="single room">Single Room</option>
+            </select>
+          </div>
+          <button class="return-home-button">Return to your homepage</button>
+        </article>
+        <section id="roomCards" class="room-cards-view hidden">
+        </section>
+      </section>
+    </section>
   </main>
 </body>
 

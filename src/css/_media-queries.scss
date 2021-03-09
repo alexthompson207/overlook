@@ -1,0 +1,62 @@
+@media screen and (max-width: 980px) { 
+  .guest-nav-right {
+    max-width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  .login-nav {
+    text-align: center;
+  }
+
+  .login-form {
+    input, button {
+      width: 60%;
+    }
+  }
+
+  .guest-nav {
+    @include flex-center-column;
+    min-width: 100%;
+    text-align: center;
+
+      h2 {
+        font-size: 25px;
+        text-align: center;
+      }
+  }
+
+  .guest-nav-right, .guest-nav-left {
+    min-width: 90%;
+  }
+
+  .date-view {
+    min-width: 50%;
+
+      .date-view-input {
+        border: 0;
+      }
+  }
+
+  .guest-bookings-view {
+    @include flex-center-column;
+  }
+  
+  .box {
+    width: 80%;
+  }
+
+  .room-filter-inputs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .room-type-form {
+    text-align: center;
+  }
+}
+
+.hidden {
+  display: none;
+}
