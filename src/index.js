@@ -303,11 +303,11 @@ function handleBookRoom(event) {
   }
 }
 
-function createBookingObject(roomNumber, event) {
+function createBookingObject(roomNumberCard, event) {
   const bookingObj = {
     "userID": currentGuest.id,
     "date": hotel.date,
-    "roomNumber": roomNumber
+    "roomNumber": roomNumberCard
   }
   bookNewRoom(bookingObj, event);
 }

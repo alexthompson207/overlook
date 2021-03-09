@@ -1,4 +1,3 @@
-import { bookingData } from '../test/test-data';
 import User from './User'
 
 class Guest extends User {
