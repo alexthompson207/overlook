@@ -6,6 +6,16 @@
 }
 
 @media screen and (max-width: 750px) {
+  .login-nav {
+    text-align: center;
+  }
+
+  .login-form {
+    input, button {
+      width: 60%;
+    }
+  }
+
   .guest-nav {
     @include flex-center-column;
     min-width: 100%;
