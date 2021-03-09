@@ -1,17 +1,15 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Guest from '../src/Guest.js';
-import Hotel from '../src/Hotel.js';
 import { roomData, bookingData, customerData } from './test-data';
 
 describe('Guest', () => {
-  let guest1, guest2, guest3, hotel;
+  let guest1, guest2, guest3;
 
   beforeEach(() => {
     guest1 = new Guest('customer1', customerData);
     guest2 = new Guest('customer2', customerData);
     guest3 = new Guest('customer40', customerData);
-    hotel = new Hotel(roomData, bookingData, '2020/01/10');
   });
 
   describe('Guest Properties', () => {

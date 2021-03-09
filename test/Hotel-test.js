@@ -51,14 +51,7 @@ describe('Hotel', () => {
 
     it('should be able to filter avaiable rooms by type', () => {
       hotel.findRoomsAvaiable('2020/04/22');
-      expect(hotel.filterRoomsByType('suite')).to.deep.equal([{
-        "number": 2,
-        "roomType": "suite",
-        "bidet": false,
-        "bedSize": "full",
-        "numBeds": 2,
-        "costPerNight": 477.38
-      }]);
+      expect(hotel.filterRoomsByType('suite')).to.deep.equal([roomData[1]]);
     });
 
     it('should return an empty array if there are no avaiable rooms by that type', () => {
@@ -68,7 +61,7 @@ describe('Hotel', () => {
 
     it('should return all avaiable rooms if filter type is "All Rooms"', () => {
       hotel.findRoomsAvaiable('2020/04/22');
-      expect(hotel.filterRoomsByType('All Rooms')).to.deep.equal([roomData[1], roomData[2], roomData[3], roomData[4], roomData[5]]);
+      expect(hotel.filterRoomsByType('all rooms')).to.deep.equal([roomData[1], roomData[2], roomData[3], roomData[4], roomData[5]]);
     });
   });
 })
