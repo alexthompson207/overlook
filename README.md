@@ -103,3 +103,5 @@ npm test
 [Gmail]: mailto:ahthomps1@gmail.com
 [linkedin-url]: https://www.linkedin.com/in/alex-thompson-he-him/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[issues-shield]: https://img.shields.io/github/issues/alexthompson207/overlook.svg?style=flat-square
+[issues-url]: https://github.com/alexthompson207/overlook/issues
