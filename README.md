@@ -88,11 +88,13 @@ npm test
 
 ## Contact
 
-[<img src="https://img.shields.io/badge/LinkedIn-alex--thompson-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0FBBD6"/>][linkedin]
+[<img src="https://img.shields.io/badge/LinkedIn-alex--thompson-informational?style=for-the-badge&labelColor=black&logo=linkedin&logoColor=0077b5&&color=0077b5"/>][linkedin]
 [<img src="https://img.shields.io/badge/Github-AlexThompson207-informational?style=for-the-badge&labelColor=black&logo=github&color=8B0BD5"/>][github]
+[<img src="https://img.shields.io/badge/Gmail-ahthomps1@gmail.com-informational?style=for-the-badge&labelColor=black&logoColor=d14836&logo=microsoft&color=d14836"/>][gmail]
 
 
 <!-- Personal Definitions  -->
 
 [linkedin]: https://www.linkedin.com/in/alex-thompson-he-him/
 [github]: https://github.com/alexthompson207
+[Gmail]: mailto:ahthomps1@gmail.com
