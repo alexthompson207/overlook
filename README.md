@@ -27,7 +27,7 @@
 
 ## About the Project
 
-This is a hotel booking application, that allows for hotel customers to book a room and view past, current, and future booking reservations. Upon successfully logging in, a guest is provided with a unique dashboard of their booking history and the total amount they have spent at the hotel. Guests can also search for available rooms, filter their search by room type, and book a room at the hotel. Upon booking a room, their dashboard view is updated to reflect their new booking and new total amount spent. 
+This is a [hotel booking application](https://alexthompson207.github.io/overlook/), that allows for hotel customers to book a room and view past, current, and future booking reservations. Upon successfully logging in, a guest is provided with a unique dashboard of their booking history and the total amount they have spent at the hotel. Guests can also search for available rooms, filter their search by room type, and book a room at the hotel. Upon booking a room, their dashboard view is updated to reflect their new booking and new total amount spent. 
 
 ## Installation
 
