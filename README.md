@@ -1,5 +1,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
+
 <h1 align="left">Overlook Hotel</h1>
 
 <p align="center">
@@ -101,3 +102,4 @@ npm test
 [github]: https://github.com/alexthompson207
 [Gmail]: mailto:ahthomps1@gmail.com
 [linkedin-url]: https://www.linkedin.com/in/alex-thompson-he-him/
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
