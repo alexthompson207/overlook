@@ -1,4 +1,5 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![Issues][issues-shield]][issues-url]
 
 
 <h1 align="left">Overlook Hotel</h1>
