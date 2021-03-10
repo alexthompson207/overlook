@@ -1,3 +1,5 @@
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 <h1 align="left">Overlook Hotel</h1>
 
 <p align="center">
@@ -13,7 +15,7 @@
   * [Guest Login](#guest-login-and-book-room)
   * [Filter Rooms](#filter-rooms)
 * [Learning Goals](#learning-goals)
-* [Future Iteration](#future-iterations)
+* [Future Iterations](#future-iterations)
 * [Technologies Used](#technologies-used)
 * [Contributors](#contributors)
 * [Contact](#contact)
@@ -98,3 +100,4 @@ npm test
 [linkedin]: https://www.linkedin.com/in/alex-thompson-he-him/
 [github]: https://github.com/alexthompson207
 [Gmail]: mailto:ahthomps1@gmail.com
+[linkedin-url]: https://www.linkedin.com/in/alex-thompson-he-him/
