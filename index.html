@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overlook Hotel</title>
+</head>
+
+<body>
+  <section class="login-view" id="loginView">
+    <nav class="login-nav">
+      <h1 class="login-title">Welcome to Overlook Hotel!</h1>
+      <h2 class="login-message">Please sign in to view your account</h2>
+    </nav>
+    <form class="login-form" id="loginForm">
+      <input aria-label="username-input" type="text" placeholder="Enter Your Username" name="login" id="loginUsername"
+        class="login-username-input" required>
+      <input aria-label="password-input" type="password" placeholder="Enter Your Password" name="password"
+        id="loginPassword" class="login-username-input" required>
+      <button class="login-button" type="sumbit" id="loginBtn">Log In</button>
+    </form>
+  </section>
+  <main>
+    <section class="guest-view hidden" id=guestView>
+      <nav class="guest-nav">
+        <div class="guest-nav-left">
+          <h1 class="guest-nav-title">Overlook Hotel</h1>
+          <h2 class="guest-nav-date">Today's Date: MM/DD/YEAR</h2>
+        </div>
+        <div class="guest-nav-right">
+          <h2 class="guest-nav-name">Welcome Alex Thompson!</h2>
+          <h2 class="guest-nav-cost">You have spent $1,000 on your stays so far!</h2>
+        </div>
+      </nav>
+      <section class="book-room-view">
+        <div class="date-view">
+          <h3 class="date-view-title">Make a Booking</h3>
+          <div class="date-view-input" id="searchSection">
+            <input aria-label="select-date-for-booking" type="date" id="dateInput" class="date-input" min="2021-03-05"
+              max="2025-12-31" required pattern="\d{4}/\d{2}/\d{2}">
+            <button id="dataBtn" class="data-button">Check Availability</button>
+          </div>
+        </div>
+      </section>
+      <section class="guest-bookings-view">
+        <article class="guest-bookings-past box">
+          <h2 class="past-title">Past Bookings</h2>
+          <ul class="display-past-list">
+          </ul>
+        </article>
+        <article class="guest-bookings-today box">
+          <h2 class="today-title">Today's Bookings</h2>
+          <ul class="display-today-list">
+          </ul>
+        </article>
+        <article class="guest-bookings-future box">
+          <h2 class="future-title">Future Bookings</h2>
+          <ul class="display-future-list">
+          </ul>
+        </article>
+      </section>
+      <section class="guest-search-view hidden">
+        <article class="room-type-form" id="roomForm">
+          <h2 class="room-types-open">Available Rooms for 03/02/1991</h2>
+          <div class="room-filter-inputs">
+            <h2 class="room-type-title">Filter These Rooms By Type:</h2>
+            <select aria-label="room-type-dropdown" name="room-types" id="roomTypes" class="room-type-inputs">
+              <option value="all rooms">All Rooms</option>
+              <option value="residential suite">Residential Suite</option>
+              <option value="suite">Suite</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="single room">Single Room</option>
+            </select>
+          </div>
+          <button class="return-home-button">Return to your homepage</button>
+        </article>
+        <section id="roomCards" class="room-cards-view hidden">
+        </section>
+      </section>
+    </section>
+  </main>
+<script src="main.bundle.js"></script></body>
+
+</html>
