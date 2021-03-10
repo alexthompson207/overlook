@@ -1,4 +1,5 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 
 
@@ -106,3 +107,5 @@ npm test
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [issues-shield]: https://img.shields.io/github/issues/alexthompson207/overlook.svg?style=flat-square
 [issues-url]: https://github.com/alexthompson207/overlook/issues
+[contributors-shield]: https://img.shields.io/github/contributors/alexthompson207/overlook.svg?style=flat-square
+[contributors-url]: https://github.com/alexthompson207/overlook/graphs/contributors
