@@ -42,6 +42,14 @@ npm install
 npm test
 ```
 
+## Functionality
+
+#### Guest Login and Book Room
+![Guest Login and Book Room](https://media.giphy.com/media/SSHYUuzdr0ZrQ9F21v/giphy.gif)
+
+#### Filter Rooms
+![Filter Rooms]()
+
 ## Learning Goals 
 1. Make network requests to API endpoints to retrieve and manipulate data.
 2. Ensure the application is following best accessibility practices.
