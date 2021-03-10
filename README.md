@@ -9,6 +9,13 @@
   <a href="https://github.com/alexthompson207/overlook">
     <img src="./planning/hotel.svg" alt="Image of a Hotel" width="80" height="80">
   </a>
+    <p align="center">
+    <br />
+    <a href="https://alexthompson207.github.io/overlook/"><strong>Explore the app »</strong></a>
+    <br />
+    <br />
+    </p>
+  </p>
   
 ## Table of Contents
 
