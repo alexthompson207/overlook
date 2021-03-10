@@ -10,14 +10,13 @@
 * [About the Project](#about-the-project)
 * [Installation](#installation)
 * [Functionality](#functionality)
-  * [General](#general)
-  * [Accessibility](#accessibility)
+  * [Guest Login](#guest-login-and-book-room)
+  * [Filter Rooms](#filter-rooms)
 * [Learning Goals](#learning-goals)
 * [Future Iteration](#future-iterations)
 * [Technologies Used](#technologies-used)
 * [Contributors](#contributors)
 * [Contact](#contact)
-
 
 
 
@@ -48,7 +47,8 @@ npm test
 <img src="https://media.giphy.com/media/SSHYUuzdr0ZrQ9F21v/giphy.gif" width="80%">
 
 #### Filter Rooms
-![Filter Rooms]()
+<img src="https://media.giphy.com/media/59e4j9Md2hLsk95wkX/giphy.gif" width="80%">
+
 
 ## Learning Goals 
 1. Make network requests to API endpoints to retrieve and manipulate data.
