@@ -45,7 +45,7 @@ npm test
 ## Functionality
 
 #### Guest Login and Book Room
-![Guest Login and Book Room](https://media.giphy.com/media/SSHYUuzdr0ZrQ9F21v/giphy.gif)
+<img src="https://media.giphy.com/media/SSHYUuzdr0ZrQ9F21v/giphy.gif" width="80%">
 
 #### Filter Rooms
 ![Filter Rooms]()
